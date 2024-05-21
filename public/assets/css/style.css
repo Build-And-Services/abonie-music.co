@@ -3054,10 +3054,10 @@ a.theme-btn {
   text-transform: capitalize;
   background-size: 202% 202%;
   background-position: 100% 100%;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(50%, var(--primary-color)), color-stop(50%, var(--heading-color)));
-  background-image: -webkit-linear-gradient(bottom, var(--primary-color) 50%, var(--heading-color) 50%);
-  background-image: -o-linear-gradient(bottom, var(--primary-color) 50%, var(--heading-color) 50%);
-  background-image: linear-gradient(to top, var(--primary-color) 50%, var(--heading-color) 50%); }
+  background-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(102.551deg, #7e8efb 30%, #3b34ce 100%);
+  box-shadow: none;
+ }
   .theme-btn i,
   a.theme-btn i {
     margin-left: 9px;
@@ -3067,7 +3067,8 @@ a.theme-btn {
     transform: rotate(-30deg); }
   .theme-btn:hover,
   a.theme-btn:hover {
-    background-position: 0 0; }
+    box-shadow: #5d55ed 0px 2px 40px 0px;
+}
   @media only screen and (max-width: 575px) {
     .theme-btn,
     a.theme-btn {
@@ -9900,6 +9901,11 @@ a.theme-btn {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 100%); }
 
 /* Footer top CTA */
+.footer-top-cta-area .theme-btn:hover{
+    color: white;
+    /* background-image: linear-gradient(102.551deg, #7e8efb 30%, #3b34ce 100%); */
+    background-color: #7e8efb;
+}
 .footer-top-cta-area {
   position: relative;
   z-index: 1; }
