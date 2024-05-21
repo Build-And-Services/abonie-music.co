@@ -15,12 +15,24 @@
                                 <div class="text-center">
                                     <h5 class="font-medium text-gray-700 dark:text-gray-100">Welcome Back !</h5>
                                     <p class="mt-2 mb-4 text-gray-500 dark:text-gray-100/60">Sign in to continue to Music.</p>
+                                    @session('error')
+                                        <div class="flex px-5 py-3 text-red-700 border border-red-100 rounded bg-red-50">
+                                            <i class="text-xl bx bx-block ltr:mr-2 rtl:ml-2"></i>
+                                            <div>
+                                                <h6 class="text-15">Danger Alert</h6>
+                                                <p class="mt-2">{{ session('error') }}</p>
+                                            </div>
+                                        </div>
+                                    @endsession
                                 </div>
-
-                                <form class="pt-2" action="index.html">
+                                <form class="pt-2" action="{{ route('login.store') }}" method="POST">
+                                    @csrf
                                     <div class="mb-4">
-                                        <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Username</label>
-                                        <input type="text" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="username" placeholder="Enter username">
+                                        <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">email</label>
+                                        <input type="email" name="email" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="email" placeholder="Enter email">
+                                        @error('email')
+                                            <p class="text-red-500">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <div class="flex">
@@ -33,9 +45,12 @@
                                         </div>
 
                                         <div class="flex">
-                                            <input type="password" class="w-full py-1.5 border-gray-50 rounded ltr:rounded-r-none rtl:rounded-l-none bg-gray-50/30 placeholder:text-13 text-13 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                            <input type="password" name="password" class="w-full py-1.5 border-gray-50 rounded ltr:rounded-r-none rtl:rounded-l-none bg-gray-50/30 placeholder:text-13 text-13 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
                                             <button class="px-4 border rounded border-gray-50 bg-gray-50 ltr:rounded-l-none rtl:rounded-r-none ltr:border-l-0 rtl:border-r-0 dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-100" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
+                                        @error('password')
+                                            <p class="text-red-500">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mb-6 row">
                                         <div class="col">

@@ -107,7 +107,7 @@ class RolePermissionSeeder extends Seeder
                     );
 
                     $roleSuperAdmin->givePermissionTo($permission);
-                    $permission->assignRole($roleSuperAdmin);
+                    $admin->assignRole($roleSuperAdmin);
                 }
             }
         }
