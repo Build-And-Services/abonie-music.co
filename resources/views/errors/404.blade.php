@@ -1,4 +1,4 @@
-<x-backend.dashboard-layout :notfound="true">
+<x-backend.dashboard-layout :blank="true">
     <div class="container-fluid">
         <div class="h-screen bg-gray-50/20 dark:bg-zinc-800">
             <div>
