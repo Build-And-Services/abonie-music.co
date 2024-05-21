@@ -1,4 +1,4 @@
-@props(['notfound' => false])
+@props(['blank' => false])
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -12,7 +12,7 @@
     @stack('stylesheet')
 </head>
 <body data-mode="dark" data-sidebar-size="lg" class="group">
-    @if (!$notfound)
+    @if (!$blank)
         <x-backend.sidebar/>
         <x-backend.navbar/>
 
