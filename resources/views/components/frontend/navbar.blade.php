@@ -2,15 +2,15 @@
     <!--Header-Top-->
 
     <!-- Start Header-Upper-->
-    <div class="header-upper">
+    <div class="header-upper rounded-pill shadow-lg" style="background-color:white;left: 50%;transform:translateX(-50%)">
         <div class="container container-1520 clearfix">
 
-            <div class="header-inner py-20 rel d-flex align-items-center justify-content-arround mx-auto">
+            <div class="header-inner rel d-flex align-items-center justify-content-between mx-auto ">
                 <div class="logo-outer">
                     <div class="logo"><a href="{{url('/music.co')}}"><img src="assets/logo-abonie.png" alt="Logo" style="width: 60px" title="Logo"></a></div>
                 </div>
 
-                <div class="nav-outer ms-lg-auto clearfix">
+                <div class="nav-outer clearfix">
                     <!-- Main Menu -->
                     <nav class="main-menu navbar-expand-lg">
                         <div class="navbar-header py-10">
@@ -28,7 +28,7 @@
                             </button>
                         </div>
 
-                        <div class="navbar-collapse collapse clearfix" style="margin-left:200px">
+                        <div class="navbar-collapse collapse">
                             <ul class="navigation onepage clearfix">
                                 <li><a href="#home">Home</a></li>
                                 <li><a href="#features">features</a></li>
@@ -45,17 +45,17 @@
 
 
                 <!-- Menu Button -->
-                <div class="menu-btns ms-lg-auto">
+                <div class="menu-btns">
+                    <a href="contact.html" class="theme-btn rounded-pill">Get Started <i class="far fa-arrow-right"></i></a>
                     {{-- <a href="cantact.html" class="light-btn">Sign Up</a> --}}
-                    <a href="contact.html" class="theme-btn">Get Started <i class="far fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
 
-        <div class="bg-lines">
+        {{-- <div class="bg-lines">
            <span></span><span></span>
            <span></span><span></span>
-        </div>
+        </div> --}}
     </div>
     <!--End Header Upper-->
 </header>

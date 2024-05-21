@@ -37,7 +37,7 @@
     ## Nice Select
     ## AOS Animation
     ## Preloader
-    
+
 -----------------------------------------------------------------------------------*/
 
 (function ($) {
@@ -47,23 +47,23 @@
     $(document).ready(function () {
 
         // ## Header Style and Scroll to Top
-        function headerStyle() {
-            if ($('.main-header').length) {
-                var windowpos = $(window).scrollTop();
-                var siteHeader = $('.main-header');
-                var scrollLink = $('.scroll-top');
-                if (windowpos >= 250) {
-                    siteHeader.addClass('fixed-header');
-                    scrollLink.fadeIn(300);
-                } else {
-                    siteHeader.removeClass('fixed-header');
-                    scrollLink.fadeOut(300);
-                }
-            }
-        }
-        headerStyle();
-        
-        
+        // function headerStyle() {
+        //     if ($('.main-header').length) {
+        //         var windowpos = $(window).scrollTop();
+        //         var siteHeader = $('.main-header');
+        //         var scrollLink = $('.scroll-top');
+        //         if (windowpos >= 250) {
+        //             siteHeader.addClass('fixed-header');
+        //             scrollLink.fadeIn(300);
+        //         } else {
+        //             siteHeader.removeClass('fixed-header');
+        //             scrollLink.fadeOut(300);
+        //         }
+        //     }
+        // }
+        // headerStyle();
+
+
         // ## Dropdown menu
         var mobileWidth = 992;
         var navcollapse = $('.navigation li.dropdown');
@@ -74,7 +74,7 @@
                 $(this).children('.megamenu').stop(true, false, true).slideToggle(300);
             }
         });
-        
+
         // ## Submenu Dropdown Toggle
         if ($('.main-header .navigation li.dropdown ul').length) {
             $('.main-header .navigation li.dropdown').append('<div class="dropdown-btn"><span class="far fa-angle-down"></span></div>');
@@ -84,21 +84,21 @@
                 $(this).prev('ul').slideToggle(500);
                 $(this).prev('.megamenu').slideToggle(800);
             });
-            
+
             //Disable dropdown parent link
             $('.navigation li.dropdown > a').on('click', function (e) {
                 e.preventDefault();
             });
         }
-        
+
         // Submenu Dropdown Toggle
         if ($('.main-header .main-menu').length) {
             $('.main-header .main-menu .navbar-toggle').click(function () {
                 $(this).prev().prev().next().next().children('li.dropdown').hide();
             });
         }
-        
-        
+
+
         // ## Sidebar Menu
         if ($('.sidebar-menu li.dropdown ul').length) {
             $('.sidebar-menu li.dropdown').append('<div class="dropdown-btn"><span class="far fa-angle-down"></span></div>');
@@ -108,15 +108,15 @@
                 $(this).prev('ul').slideToggle(500);
                 $(this).prev('.megamenu').slideToggle(800);
             });
-            
+
             //Disable dropdown parent link
             $('.sidebar-menu li.dropdown > a').on('click', function (e) {
                 e.preventDefault();
             });
         }
-        
-        
-         
+
+
+
         // ## Menu Hidden Sidebar Content Toggle
         if($('.menu-sidebar').length){
             //Show Form
@@ -134,14 +134,14 @@
                 $(this).next('ul').slideToggle(500);
             });
         }
-         
-        
+
+
         // ## Search Box
 		$('.nav-search > button').on('click', function () {
 			$('.nav-search form').toggleClass('hide');
 		});
-        
-        
+
+
         // Hide Box Search WHEN CLICK OUTSIDE
 		if ($(window).width() > 767){
 			$('body').on('click', function (event) {
@@ -153,8 +153,8 @@
 				}
 			});
 		}
-        
-        
+
+
         // ## Fancy Box Hover
         $('.fancy-box').hover(
             function(){
@@ -163,16 +163,16 @@
                 $(this).find('.inner-content').slideUp();
             }
         );
-        
-  
+
+
         // ## Video Popup
         if ($('.video-play').length) {
             $('.video-play').magnificPopup({
                 type: 'video',
             });
         }
-        
-        
+
+
         // ## Marquee Right Slider
         if ($('.marquee-slider-right').length) {
             $('.marquee-slider-right').slick({
@@ -190,8 +190,8 @@
                 buttons: false,
             });
         }
-         
-        
+
+
         // ## Marquee Left Slider
         if ($('.marquee-slider-left').length) {
             $('.marquee-slider-left').slick({
@@ -210,8 +210,8 @@
                 rtl: true,
             });
         }
-         
-        
+
+
         // ## Testimonials Three Slider
         if ($('.testi-slider-three').length) {
             $('.testi-slider-three').slick({
@@ -233,8 +233,8 @@
                 ]
             });
         }
-        
-        
+
+
         // ## Testimonials Four Slider
         if ($('.testi-slider-four').length) {
             $('.testi-slider-four').slick({
@@ -256,8 +256,8 @@
                 ]
             });
         }
-        
-        
+
+
         // ## Testimonials Five Slider
         if ($('.testi-slider-five').length) {
             $('.testi-slider-five').slick({
@@ -271,8 +271,8 @@
                 dots: true,
             });
         }
-        
-        
+
+
         // ## Testimonials Six Slider
         if ($('.testi-slider-six').length) {
             $('.testi-slider-six').slick({
@@ -288,8 +288,8 @@
                 nextArrow: '<button class="next-arrow"><i class="far fa-chevron-right"></i></button>',
             });
         }
-        
-        
+
+
         // ## Testimonials Seven Slider
         if ($('.testi-slider-seven').length) {
             $('.testi-slider-seven').slick({
@@ -305,9 +305,9 @@
                 nextArrow: '.testi-next',
             });
         }
-        
-        
-        
+
+
+
         // ## Testimonials Eight Slider
         if ($('.testi-slider-eight').length) {
             $('.testi-slider-eight').slick({
@@ -321,8 +321,8 @@
                 dots: false,
             });
         }
-        
-        
+
+
         // ## Testimonials Nine Slider
         if ($('.testi-slider-nine').length) {
             $('.testi-slider-nine').slick({
@@ -350,8 +350,8 @@
                 ]
             });
         }
-        
-        
+
+
         // ## Price Range Fliter jQuery UI
         if ($('.price-slider-range').length) {
             $(".price-slider-range").slider({
@@ -366,7 +366,7 @@
             $("#price").val("$ " + $(".price-slider-range").slider("values", 0) +
                 " - $ " + $(".price-slider-range").slider("values", 1));
         }
-        
+
         // ## Project Filter
         $('.project-active').imagesLoaded(function () {
 			var items = $('.project-active').isotope({
@@ -390,8 +390,8 @@
 				event.preventDefault();
 			});
 		});
-        
-        
+
+
         // ## Course Filter
         $('.course-active').imagesLoaded(function () {
 			var items = $('.course-active').isotope({
@@ -415,9 +415,9 @@
 				event.preventDefault();
 			});
 		});
-        
-        
-        
+
+
+
         // ## Project Masonry
         if ($('.project-masonry').length) {
             $(this).imagesLoaded(function () {
@@ -427,8 +427,8 @@
                 });
             });
         }
-        
-        
+
+
         // ## Coming Soon CountDown //
 		if($('.coming-soon-wrap').length !== 0){
                 const second = 1000,
@@ -450,12 +450,12 @@
 			  //}
 			}, second)
         };
-        
-        
+
+
         /* ## Fact Counter + Text Count - Our Success */
         if ($('.counter-text-wrap').length) {
             $('.counter-text-wrap').appear(function () {
-                
+
                 var $t = $(this),
                     n = $t.find(".count-text").attr("data-stop"),
                     r = parseInt($t.find(".count-text").attr("data-speed"), 10);
@@ -482,17 +482,17 @@
                 accY: 0
             });
         }
-        
-        
-        
+
+
+
         // ## Tooltip active
         $('.tooltip-item').hover(function () {
             $('.tooltip-item').removeClass('active');
             $(this).addClass('active');
         });
-        
-        
-        
+
+
+
         // ## Scroll to Top
         if ($('.scroll-to-target').length) {
             $(".scroll-to-target").on('click', function () {
@@ -504,20 +504,20 @@
 
             });
         }
-        
-        
-        
+
+
+
         // ## Nice Select
         $('select').niceSelect();
-        
-        
+
+
         // ## AOS Animation
         AOS.init();
-        
- 
+
+
     });
-    
-    
+
+
     /* ==========================================================================
        When document is resize, do
     ========================================================================== */
@@ -535,27 +535,27 @@
        When document is scroll, do
     ========================================================================== */
 
-    $(window).on('scroll', function () {
+    // $(window).on('scroll', function () {
 
-        // Header Style and Scroll to Top
-        function headerStyle() {
-            if ($('.main-header').length) {
-                var windowpos = $(window).scrollTop();
-                var siteHeader = $('.main-header');
-                var scrollLink = $('.scroll-top');
-                if (windowpos >= 100) {
-                    siteHeader.addClass('fixed-header');
-                    scrollLink.fadeIn(300);
-                } else {
-                    siteHeader.removeClass('fixed-header');
-                    scrollLink.fadeOut(300);
-                }
-            }
-        }
+    //     // Header Style and Scroll to Top
+    //     function headerStyle() {
+    //         if ($('.main-header').length) {
+    //             var windowpos = $(window).scrollTop();
+    //             var siteHeader = $('.main-header');
+    //             var scrollLink = $('.scroll-top');
+    //             if (windowpos >= 100) {
+    //                 siteHeader.addClass('fixed-header');
+    //                 scrollLink.fadeIn(300);
+    //             } else {
+    //                 siteHeader.removeClass('fixed-header');
+    //                 scrollLink.fadeOut(300);
+    //             }
+    //         }
+    //     }
 
-        headerStyle();
+    //     headerStyle();
 
-    });
+    // });
 
     /* ==========================================================================
        When document is loaded, do
@@ -570,7 +570,7 @@
             }
         }
         handlePreloader();
-        
+
     });
 
 })(window.jQuery);

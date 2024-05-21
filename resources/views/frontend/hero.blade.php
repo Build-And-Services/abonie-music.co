@@ -1,5 +1,5 @@
 <section id="home" class="hero-area-five py-130 rpy-100 rel z-1">
-    <div class="container">
+    <div class="container" style="padding-top: 70px">
         <div class="hero-content style-five text-center" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
             <span class="subtitle-one mb-20" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50"><i class="fas fa-rocket-launch"></i> Analytics you’ll enjoy using</span>
             <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">Only Customer Communication platform you'll ever need</h1>

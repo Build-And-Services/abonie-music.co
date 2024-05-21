@@ -7640,19 +7640,23 @@ a.theme-btn {
 .main-header {
   position: relative;
   left: 0px;
-  top: 0px;
+  top: 20px;
   z-index: 999;
   width: 100%;
-  -webkit-transition: all 500ms ease;
-  -o-transition: all 500ms ease;
-  transition: all 500ms ease; }
+  background-color: #c6d3ff;
+}
   .main-header .header-upper {
     z-index: 5;
-    width: 100%;
-    position: relative;
-    -webkit-transition: all 500ms ease;
-    -o-transition: all 500ms ease;
-    transition: all 500ms ease; }
+    width: 90%;
+    position: fixed;
+}
+@media only screen and (max-width: 575px) {
+    .header-inner {
+      padding: 3px; } }
+@media only screen and (min-width: 1200px) {
+    .header-inner {
+      padding: 15px; } }
+
   .main-header .header-inner {
     border-bottom: 1px solid var(--border-color); }
   .main-header .logo-outer {
@@ -7667,19 +7671,14 @@ a.theme-btn {
     padding: 2px 0;
     position: relative; }
   .main-header.menu-absolute .header-upper {
-    position: absolute; }
+    position: fixed; }
   .main-header.fixed-header .header-upper {
-    top: 0;
-    left: 0;
     position: fixed;
     background: white;
-    -webkit-animation: sticky  1s;
-    animation: sticky  1s;
-    -webkit-box-shadow: 0px 0px 30px 0px rgba(87, 95, 245, 0.1);
     box-shadow: 0px 0px 30px 0px rgba(87, 95, 245, 0.1); }
   .main-header.fixed-header .header-inner {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border-bottom: none; }
   @media only screen and (min-width: 992px) {
     .main-header.fixed-header .main-menu .navbar-collapse > ul > li {
@@ -7913,7 +7912,8 @@ a.theme-btn {
       .menu-btns .light-btn {
         display: none; } }
   .menu-btns .theme-btn {
-    margin-left: 33px; }
+    margin-left: -180px;
+}
     @media only screen and (max-width: 1199px) {
       .menu-btns .theme-btn {
         display: none; } }
