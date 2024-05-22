@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -90,7 +91,7 @@ class RolePermissionSeeder extends Seeder
                 ]
             ]
         ];
-        $admin = Admin::where('username', 'superadmin')->first();
+        $admin = User::where('email', 'superadmin@mail.com')->first();
         $roleSuperAdmin = $this->maybeCreateSuperAdminRole($admin);
 
         for ($i = 0; $i < count($permissions); $i++) {
@@ -102,7 +103,7 @@ class RolePermissionSeeder extends Seeder
                         [
                             'name' => $permissions[$i]['permissions'][$j],
                             'group_name' => $permissionGroup,
-                            'guard_name' => 'admin'
+                            'guard_name' => 'user'
                         ]
                     );
 
@@ -116,13 +117,13 @@ class RolePermissionSeeder extends Seeder
     private function maybeCreateSuperAdminRole($admin): Role
     {
         if (is_null($admin)) {
-            $roleSuperAdmin = Role::create(['name' => 'superadmin', 'guard_name' => 'admin']);
+            $roleSuperAdmin = Role::create(['name' => 'superadmin', 'guard_name' => 'user']);
         } else {
-            $roleSuperAdmin = Role::where('name', 'superadmin')->where('guard_name', 'admin')->first();
+            $roleSuperAdmin = Role::where('name', 'superadmin')->where('guard_name', 'user')->first();
         }
 
         if (is_null($roleSuperAdmin)) {
-            $roleSuperAdmin = Role::create(['name' => 'superadmin', 'guard_name' => 'admin']);
+            $roleSuperAdmin = Role::create(['name' => 'superadmin', 'guard_name' => 'user']);
         }
 
         return $roleSuperAdmin;
