@@ -13,8 +13,7 @@ class AuthenticateController extends Controller
         if(Auth::check()) {
             Redirect::to("/dashboard/user")->send();
         } else {
-            if(Auth::guard("admin")->check()) {
-                // dd(Auth::guard("admin")->check())->send();
+            if(Auth::check()) {
                 Redirect::to("/dashboard/admin")->send();
             }
         }
@@ -33,15 +32,11 @@ class AuthenticateController extends Controller
             "password"=> "required"
         ]);
         try {
-            $attempt = Auth::guard('admin')->attempt($credentials);
+            $attempt = Auth::attempt($credentials);
             if($attempt) {
                 return redirect()->route("dashboard.admin")->with("success","Berhasil Login");
             }else{
-                if(Auth::attempt(["email"=> $request->email, 'password' => $request->password])) {
-                    return redirect()->route("dashboard")->with("success","Berhasil Login");
-                }else{
-                    return redirect()->back()->with("error","Terjadi Kesalahan saat login");
-                }
+                throw new \Exception("Something wrong");
             }
         } catch (\Throwable $th) {
             dd($th->getMessage());
@@ -51,7 +46,6 @@ class AuthenticateController extends Controller
 
     public function logout(Request $request) {
         Auth::logout();
-        Auth::guard("admin")->logout();
         return redirect()->route("login")->with("success","Berhasil logout");
     }
 }
