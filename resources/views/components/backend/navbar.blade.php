@@ -46,9 +46,7 @@
                         <button type="button" class="flex items-center px-3 py-2 h-[70px] border-x border-gray-50 bg-gray-50/30  dropdown-toggle dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-100" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             <img class="border-[3px] border-gray-700 dark:border-zinc-400 rounded-full w-9 h-9 ltr:xl:mr-2 rtl:xl:ml-2" src="assets/logo-abonie.png" alt="Header Avatar">
                             <span class="hidden font-medium xl:block">
-                                @auth('admin')
-                                    {{ Auth::guard('admin')->user()->name }}
-                                @else 
+                                @auth
                                     {{ Auth::user()->name }}
                                 @endauth
                             </span>
