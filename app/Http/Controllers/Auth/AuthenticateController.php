@@ -11,11 +11,7 @@ class AuthenticateController extends Controller
 {
     public function __construct() {
         if(Auth::check()) {
-            Redirect::to("/dashboard/user")->send();
-        } else {
-            if(Auth::check()) {
-                Redirect::to("/dashboard/admin")->send();
-            }
+            Redirect::to("/dashboard")->send();
         }
     }
     public function index() {
