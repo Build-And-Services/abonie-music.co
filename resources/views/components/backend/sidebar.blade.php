@@ -9,7 +9,7 @@
                 <li class="px-5 py-3 text-xs font-medium text-gray-500 cursor-default leading-[18px] group-data-[sidebar-size=sm]:hidden block" data-key="t-menu">Menu</li>
 
                 <li>
-                    <a href="index.html" class="block py-2.5 px-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
+                    <a href="das" class="block py-2.5 px-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
                         <i data-feather="home" fill="#545a6d33"></i>
                         <span data-key="t-dashboard"> Dashboard</span>
                     </a>
@@ -242,23 +242,35 @@
 
                 <li class="px-5 py-3 mt-2 text-xs font-medium text-gray-500 cursor-default leading-[18px] group-data-[sidebar-size=sm]:hidden" data-key="t-elements">Setting</li>
 
-                <li>
-                    <a href="javascript: void(0);" aria-expanded="false" class="block py-2.5 px-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear nav-menu hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
-                        <i data-feather="briefcase" fill="#545a6d33"></i>
-                        <span data-key="t-compo">Users Management</span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="alerts.html" class="pl-[52.8px] pr-6 py-[6.4px] block text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">All User</a>
-                        </li>
-                        <li>
-                            <a href="buttons.html" class="pl-[52.8px] pr-6 py-[6.4px] block text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">User Active</a>
-                        </li>
-                        <li>
-                            <a href="cards.html" class="pl-[52.8px] pr-6 py-[6.4px] block text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">User banned</a>
-                        </li>
-                    </ul>
-                </li>
+                @can('admin.view')               
+                    <li>
+                        <a href="javascript: void(0);" aria-expanded="false" class="block py-2.5 px-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear nav-menu hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
+                            <i data-feather="briefcase" fill="#545a6d33"></i>
+                            <span data-key="t-compo">Users Management</span>
+                        </a>
+                        <ul>
+                            @can('admin.view')                 
+                                <li>
+                                    <a href="alerts.html" class="pl-[52.8px] pr-6 py-[6.4px] block text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">All User</a>
+                                </li>
+                            @endcan
+
+                            @can('admin.view')                 
+                                <li>
+                                    <a href="buttons.html" class="pl-[52.8px] pr-6 py-[6.4px] block text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">User Active</a>
+                                </li>
+                            @endcan
+
+                            @can('admin.view')                 
+                                <li>
+                                    <a href="cards.html" class="pl-[52.8px] pr-6 py-[6.4px] block text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">User banned</a>
+                                </li>
+                            @endcan
+
+
+                        </ul>
+                    </li>
+                @endcan
 
             </ul>
         </div>

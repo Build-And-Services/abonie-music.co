@@ -34,7 +34,7 @@ class AuthenticateController extends Controller
         try {
             $attempt = Auth::attempt($credentials);
             if($attempt) {
-                return redirect()->route("dashboard.admin")->with("success","Berhasil Login");
+                return redirect()->route("dashboard")->with("success","Berhasil Login");
             }else{
                 throw new \Exception("Something wrong");
             }
