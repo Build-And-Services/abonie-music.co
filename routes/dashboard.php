@@ -11,16 +11,8 @@ Route::controller(AuthenticateController::class)->group(function () {
     Route::post("/login", "login")->name("login.store");
 })->middleware("web");
 
-Route::middleware(["auth:admin"])->group(function () {
-    Route::prefix('/dashboard/admin')->group( function () {
-        Route::get('/',function(){
-            return view('backend.index');
-        })->name('dashboard.admin');
-    });
-});
-
 Route::middleware(["auth"])->group(function () {
-    Route::prefix('/dashboard/user')->group( function () {
+    Route::prefix('/dashboard')->group( function () {
         Route::get('/',function(){
             return view('backend.index');
         })->name('dashboard');

@@ -55,7 +55,7 @@
                         <div class="absolute top-0 z-50 hidden w-40 list-none bg-white dropdown-menu dropdown-animation rounded shadow  dark:bg-zinc-800" id="profile/log">
                             <div class="border border-gray-50 dark:border-zinc-600" aria-labelledby="navNotifications">
                                 <div class="dropdown-item dark:text-gray-100">
-                                    <a class="block px-3 py-2 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" href="apps-contacts-profile.html">
+                                    <a class="block px-3 py-2 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" href="/profile">
                                         <i class="mr-1 align-middle mdi mdi-face-man text-16"></i> Profile
                                     </a>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div class="dropdown-item dark:text-gray-100">
                                     <form action="{{ route('logout') }}" method="post">
                                         @csrf
-                                        <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50" href="logout.html">
+                                        <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50">
                                             <i class="mr-1 align-middle mdi mdi-logout text-16"></i> Logout
                                         </button>
                                     </form>
