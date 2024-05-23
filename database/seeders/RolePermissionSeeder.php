@@ -92,7 +92,9 @@ class RolePermissionSeeder extends Seeder
             ]
         ];
         $admin = User::where('email', 'superadmin@mail.com')->first();
+        $user = User::where('email', 'user@mail.com')->first();
         $roleSuperAdmin = $this->maybeCreateSuperAdminRole($admin);
+        $roleUser = $this->maybeCreateUserRole($user);
 
         for ($i = 0; $i < count($permissions); $i++) {
             $permissionGroup = $permissions[$i]['group_name'];
@@ -107,8 +109,14 @@ class RolePermissionSeeder extends Seeder
                         ]
                     );
 
+                    if($permissionGroup != 'admin' || $permissionGroup != 'role'){
+                        $roleUser->givePermissionTo($permission);
+                    }
+                    
                     $roleSuperAdmin->givePermissionTo($permission);
                     $admin->assignRole($roleSuperAdmin);
+                    $user->assignRole($roleUser);
+                    // dd($roleUser);
                 }
             }
         }
@@ -124,6 +132,21 @@ class RolePermissionSeeder extends Seeder
 
         if (is_null($roleSuperAdmin)) {
             $roleSuperAdmin = Role::create(['name' => 'superadmin', 'guard_name' => 'user']);
+        }
+
+        return $roleSuperAdmin;
+    }
+
+    private function maybeCreateUserRole($user): Role
+    {
+        if (is_null($user)) {
+            $roleSuperAdmin = Role::create(['name' => 'user', 'guard_name' => 'user']);
+        } else {
+            $roleSuperAdmin = Role::where('name', 'user')->where('guard_name', 'user')->first();
+        }
+
+        if (is_null($roleSuperAdmin)) {
+            $roleSuperAdmin = Role::create(['name' => 'user', 'guard_name' => 'user']);
         }
 
         return $roleSuperAdmin;
