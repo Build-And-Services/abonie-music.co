@@ -8,7 +8,7 @@
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque quae abillo inventore veritatis</p>
                 </div>
             </div>
-            <a href="contact.html" class="theme-btn">Sign Up For Free <i class="far fa-arrow-right"></i></a>
+            <a href="{{ route('login') }}" class="theme-btn">Sign Up For Free <i class="far fa-arrow-right"></i></a>
         </div>
     </div>
     <div class="hero-bg-wave-shapes">
