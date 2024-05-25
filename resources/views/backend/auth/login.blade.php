@@ -16,11 +16,10 @@
                                     <h5 class="font-medium text-gray-700 dark:text-gray-100">Welcome Back !</h5>
                                     <p class="mt-2 mb-4 text-gray-500 dark:text-gray-100/60">Sign in to continue to Music.</p>
                                     @session('error')
-                                        <div class="flex px-5 py-3 text-red-700 border border-red-100 rounded bg-red-50">
+                                        <div class="flex items-center px-5 py-3 text-red-700 border border-red-100 rounded bg-red-50">
                                             <i class="text-xl bx bx-block ltr:mr-2 rtl:ml-2"></i>
                                             <div>
-                                                <h6 class="text-15">Danger Alert</h6>
-                                                <p class="mt-2">{{ session('error') }}</p>
+                                                <p>{{ session('error') }}</p>
                                             </div>
                                         </div>
                                     @endsession

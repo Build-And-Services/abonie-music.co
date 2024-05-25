@@ -5,8 +5,5 @@
         @else
             I am not a super-admin...
         @endrole
-        <h1>
-            {{ Auth::user()->roles[0]->name }}
-        </h1>
     </div>
 </x-backend.dashboard-layout>

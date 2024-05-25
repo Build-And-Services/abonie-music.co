@@ -240,9 +240,9 @@
                     </ul>
                 </li>
 
-                <li class="px-5 py-3 mt-2 text-xs font-medium text-gray-500 cursor-default leading-[18px] group-data-[sidebar-size=sm]:hidden" data-key="t-elements">Setting</li>
-
+                
                 @can('admin.view')               
+                <li class="px-5 py-3 mt-2 text-xs font-medium text-gray-500 cursor-default leading-[18px] group-data-[sidebar-size=sm]:hidden" data-key="t-elements">Setting</li>
                     <li>
                         <a href="javascript: void(0);" aria-expanded="false" class="block py-2.5 px-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear nav-menu hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
                             <i data-feather="briefcase" fill="#545a6d33"></i>

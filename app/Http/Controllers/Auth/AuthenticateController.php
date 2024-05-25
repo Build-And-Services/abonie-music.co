@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -35,8 +36,22 @@ class AuthenticateController extends Controller
                 throw new \Exception("Something wrong");
             }
         } catch (\Throwable $th) {
-            dd($th->getMessage());
-            return redirect()->back()->with("error", $th->getMessage());
+            return redirect()->back()->with("error", "Email atau password anda salah.");
+        }
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required:min:6',
+            'password_confirmation' => 'required_with:password|same:password|min:6'
+        ]);
+        try {
+            $user = User::create($request->all())->assignRole('user');
+            return redirect()->route('login')->with('success','Your Account success to created');
+        } catch (\Throwable $th) {
+            return back()->with('error','Something was wrong when create your account.');
         }
     }
 
