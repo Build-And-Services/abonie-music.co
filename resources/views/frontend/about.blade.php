@@ -5,7 +5,7 @@
                 <div class="tap-five-content rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                     <div class="section-title pt-10 mb-55">
                         <span class="subtitle-one style-three mb-20"><i class="fas fa-rocket-launch"></i> Best Custom Link for You</span>
-                        <h2>Leverage our Feature to build your custom apps</h2>
+                        <h2>Leverage Our Feature to Easier Customization</h2>
                     </div>
 
                     <ul class="nav advanced-tab style-four mb-40" role="tablist">
@@ -27,7 +27,7 @@
                                     <i class="far fa-check"></i>
                                 </div>
                                 <div class="content">
-                                    <h5>Individual lead profile</h5>
+                                    <h5>Individual profile</h5>
                                     <p>Doloremque laudantium totamto aperiame eaque</p>
                                 </div>
                             </div>
@@ -36,7 +36,7 @@
                                     <i class="far fa-check"></i>
                                 </div>
                                 <div class="content">
-                                    <h5>Advanced deal tracking</h5>
+                                    <h5>Advanced link</h5>
                                     <p>At vero eoset accusamus etodio dignissimos ducimus</p>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                     <i class="far fa-check"></i>
                                 </div>
                                 <div class="content">
-                                    <h5>Individual lead profile</h5>
+                                    <h5>Individual profile</h5>
                                     <p>Doloremque laudantium totamto aperiame eaque</p>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                                     <i class="far fa-check"></i>
                                 </div>
                                 <div class="content">
-                                    <h5>Advanced deal tracking</h5>
+                                    <h5>Advanced link</h5>
                                     <p>At vero eoset accusamus etodio dignissimos ducimus</p>
                                 </div>
                             </div>
@@ -118,7 +118,7 @@
                     <div class="icon"><i class="flaticon-online-registration"></i></div>
                     <span class="count-text k-plus" data-speed="3000" data-stop="1052">0</span>
                     <hr>
-                    <span class="counter-title">Regular Free Registation</span>
+                    <span class="counter-title">Satisfied Music Enthusiasts</span>
                 </div>
             </div>
         </div>

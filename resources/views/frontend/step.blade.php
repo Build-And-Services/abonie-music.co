@@ -8,9 +8,9 @@
                         <h2>Getting started takes less than 2 minutes</h2>
                     </div>
                     <ul class="icon-list mt-40 mb-40">
-                        <li><i class="fal fa-arrow-right"></i> No credit card required</li>
+                        <li><i class="fal fa-arrow-right"></i> Free registrations</li>
                     </ul>
-                    <a href="about.html" class="theme-btn">Learn More <i class="far fa-arrow-right"></i></a>
+                    <a href="/login" class="theme-btn">Learn More <i class="far fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -25,14 +25,14 @@
                     <div class="numbered-box style-two">
                         <div class="number">2</div>
                         <div class="content">
-                            <h5>View Data Analysis</h5>
+                            <h5>View Music Data</h5>
                             <p>Praesentium voluptatum deleniti atque corrupti quos dolores quas molestias exceptur occaecatie</p>
                         </div>
                     </div>
                     <div class="numbered-box style-two">
                         <div class="number">3</div>
                         <div class="content">
-                            <h5>Get Your Final Result</h5>
+                            <h5>Get Your Final Link</h5>
                             <p>Praesentium voluptatum deleniti atque corrupti quos dolores quas molestias exceptur occaecatie</p>
                         </div>
                     </div>

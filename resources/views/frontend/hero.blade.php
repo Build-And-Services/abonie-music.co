@@ -1,8 +1,8 @@
 <section id="home" class="hero-area-five py-130 rpy-100 rel z-1">
     <div class="container" style="padding-top: 70px">
         <div class="hero-content style-five text-center" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-            <span class="subtitle-one mb-20" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50"><i class="fas fa-rocket-launch"></i> Analytics you’ll enjoy using</span>
-            <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">Only Customer Communication platform you'll ever need</h1>
+            <span class="subtitle-one mb-20" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50"><i class="fas fa-rocket-launch"></i> Presave you’ll enjoy using</span>
+            <h1 data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">Get Update The Latest Music Releases Today!</h1>
             <div class="row justify-content-center pt-5 rpt-0 pb-25" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                 <div class="col-xl-7 col-lg-9">
                     <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque quae abillo inventore veritatis</p>
