@@ -4,7 +4,7 @@
         <div class="flex items-center topbar-brand">
             <div class="hidden lg:flex navbar-brand items-center justify-between shrink px-6 h-[70px]  ltr:border-r rtl:border-l bg-[#fbfaff] border-gray-50 dark:border-zinc-700 dark:bg-zinc-800 shadow-none">
                 <a href="#" class="flex items-center text-lg flex-shrink-0 font-bold dark:text-white leading-[69px]">
-                    <img src="assets/logo-abonie.png" alt="" class="inline-block w-6 h-6 align-middle ltr:xl:mr-2 rtl:xl:ml-2">
+                    <img src="{{ asset("assets/logo-abonie.png")}}" alt="" class="inline-block w-6 h-6 align-middle ltr:xl:mr-2 rtl:xl:ml-2">
                     <span class="hidden font-bold text-gray-700 align-middle xl:block dark:text-gray-100 leading-[69px]">Abonie</span>
                 </a>
             </div>
@@ -44,7 +44,7 @@
                 <div>
                     <div class="relative dropdown">
                         <button type="button" class="flex items-center px-3 py-2 h-[70px] border-x border-gray-50 bg-gray-50/30  dropdown-toggle dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-100" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <img class="border-[3px] border-gray-700 dark:border-zinc-400 rounded-full w-9 h-9 ltr:xl:mr-2 rtl:xl:ml-2" src="assets/logo-abonie.png" alt="Header Avatar">
+                            <img class="border-[3px] border-gray-700 dark:border-zinc-400 rounded-full w-9 h-9 ltr:xl:mr-2 rtl:xl:ml-2" src="{{ asset('assets/logo-abonie.png')}}" alt="Header Avatar">
                             <span class="hidden font-medium xl:block">
                                 @auth
                                     {{ Auth::user()->name }}
