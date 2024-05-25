@@ -10,6 +10,27 @@
 
     <link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">
     @stack('stylesheet')
+    <style>
+
+        .dt-buttons .dt-button{
+            padding: 10px 20px;
+        }
+
+        .dt-buttons .dt-button:hover{
+            background: #8f90a3;
+        }
+
+        .dt-buttons button:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .dt-button-collection div{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body data-mode="dark" data-sidebar-size="lg" class="group">
     @if (!$blank)
