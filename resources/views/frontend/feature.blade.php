@@ -80,8 +80,8 @@
         <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9 col-md-11">
                 <div class="section-title text-center mb-55" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                   <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Best Communication System</span>
-                    <h2>Support your customers on their preferred channels</h2>
+                   <span class="subtitle-one style-two mb-20"><i class="fas fa-rocket-launch"></i> Try Our Service</span>
+                    <h2>Support our clients on their preferred channels</h2>
                 </div>
             </div>
         </div>

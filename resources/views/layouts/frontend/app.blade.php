@@ -31,6 +31,10 @@
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <style>
+
+    </style>
+
 </head>
 <body class="home-five">
     <div class="page-wrapper">
@@ -59,13 +63,13 @@
 
         <!-- Feature box Area Start -->
         <!-- Feature box Area End -->
-        @include('frontend.service')
+        {{-- @include('frontend.service') --}}
         <!-- About Area Five Start -->
         <!-- About Area End -->
 
 
         <!-- FeedbackArea Start -->
-        @include('frontend.testimonial')
+        {{-- @include('frontend.testimonial') --}}
         <!-- FeedbackArea End -->
 
 

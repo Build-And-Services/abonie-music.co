@@ -33,8 +33,6 @@
                                 <li><a href="#home">Home</a></li>
                                 <li><a href="#features">features</a></li>
                                 <li><a href="#about">about</a></li>
-                                <li><a href="#services">services</a></li>
-                                <li><a href="#testimonials">testimonials</a></li>
                                 <li><a href="#work-step">work step</a></li>
                             </ul>
                         </div>
