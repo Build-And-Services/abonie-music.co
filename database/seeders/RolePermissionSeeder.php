@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -109,7 +107,7 @@ class RolePermissionSeeder extends Seeder
                         ]
                     );
 
-                    if($permissionGroup != 'admin' || $permissionGroup != 'role'){
+                    if($permissionGroup != 'admin' && $permissionGroup != 'role'){
                         $roleUser->givePermissionTo($permission);
                     }
                     

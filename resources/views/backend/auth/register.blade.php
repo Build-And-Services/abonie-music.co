@@ -13,19 +13,52 @@
 
                             <div class="my-auto">
                                 <div class="text-center">
-                                    <h5 class="font-medium text-gray-700 dark:text-gray-100">Register Account !</h5>
-                                    <p class="mt-2 mb-4 text-gray-500 dark:text-gray-100/60">Sign up to continue to Music.</p>
+                                    <h5 class="font-medium text-gray-700 dark:text-gray-100 mb-5">Register Account !</h5>
+                                    @session('error')
+                                        <div class="flex items-center px-5 py-3 text-red-700 border border-red-100 rounded bg-red-50">
+                                            <i class="text-xl bx bx-block ltr:mr-2 rtl:ml-2"></i>
+                                            <div>
+                                                <p>{{ session('error') }}</p>
+                                            </div>
+                                        </div>
+                                    @endsession
                                 </div>
 
-                                <form class="pt-2" action="/">
-                                    <div class="mb-4">
-                                        <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Email</label>
-                                        <input type="email" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="email" placeholder="Enter email">
+                                <form class="pt-2" action="{{ route('register.store') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-4 relative">
+                                        <div>
+                                            <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Name</label>
+                                            <input type="text" name="name" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="name" placeholder="Enter name" value="{{ old('name') }}">
+                                        </div>
+                                        @error('name')                     
+                                            <div class="absolute z-50 inline-block px-3 py-1.5 mt-2 text-xs text-white rounded bg-red-500/90">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
-                                        <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Username</label>
-                                        <input type="text" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="username" placeholder="Enter username">
+                                        <div>
+                                            <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Email</label>
+                                            <input type="email" name="email" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="email" placeholder="Enter email" value="{{ old('email') }}">
+                                        </div>
+                                        @error('email')                     
+                                            <div class="absolute z-50 inline-block px-3 py-1.5 mt-2 text-xs text-white rounded bg-red-500/90">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
+                                    {{-- <div class="mb-4">
+                                        <div>
+                                            <label class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Username</label>
+                                            <input type="text" name="username" class="w-full py-1.5 border-gray-50 rounded placeholder:text-13 bg-gray-50/30 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100 text-13" id="username" placeholder="Enter username" value="{{ old('username') }}">
+                                        </div>
+                                        @error('username')                     
+                                            <div class="absolute z-50 inline-block px-3 py-1.5 mt-2 text-xs text-white rounded bg-red-500/90">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div> --}}
                                     <div class="mb-3">
                                         <div class="flex">
                                             <div class="flex-grow-1">
@@ -33,9 +66,14 @@
                                             </div>
                                         </div>
                                         <div class="flex">
-                                            <input type="password" class="w-full py-1.5 border-gray-50 rounded ltr:rounded-r-none rtl:rounded-l-none bg-gray-50/30 placeholder:text-13 text-13 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                            <input type="password" name="password" class="w-full py-1.5 border-gray-50 rounded ltr:rounded-r-none rtl:rounded-l-none bg-gray-50/30 placeholder:text-13 text-13 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon" value="{{ old('password') }}">
                                             <button class="px-4 border rounded border-gray-50 bg-gray-50 ltr:rounded-l-none rtl:rounded-r-none ltr:border-l-0 rtl:border-r-0 dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-100" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
+                                        @error('password')                     
+                                            <div class="absolute z-50 inline-block px-3 py-1.5 mt-2 text-xs text-white rounded bg-red-500/90">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <div class="flex">
@@ -44,11 +82,16 @@
                                             </div>
                                         </div>
                                         <div class="flex">
-                                            <input type="password" class="w-full py-1.5 border-gray-50 rounded ltr:rounded-r-none rtl:rounded-l-none bg-gray-50/30 placeholder:text-13 text-13 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon2">
+                                            <input type="password" name="password_confirmation" class="w-full py-1.5 border-gray-50 rounded ltr:rounded-r-none rtl:rounded-l-none bg-gray-50/30 placeholder:text-13 text-13 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-gray-100 dark:placeholder:text-zinc-100/60 focus:ring focus:ring-violet-500/20 focus:border-violet-100" placeholder="Enter password" aria-label="Password" aria-describedby="password-addon2" value="{{ old('password_confirmation') }}">
                                             <button class="px-4 border rounded border-gray-50 bg-gray-50 ltr:rounded-l-none rtl:rounded-r-none ltr:border-l-0 rtl:border-r-0 dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-100" type="button" id="password-addon2"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
+                                        @error('password_confirmation')                     
+                                            <div class="absolute z-50 inline-block px-3 py-1.5 mt-2 text-xs text-white rounded bg-red-500/90">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 mt-8">
                                         <button class="w-full py-2 text-white border-transparent shadow-md btn bg-violet-500 w-100 waves-effect waves-light shadow-violet-200 dark:shadow-zinc-600" type="submit">Sign Up</button>
                                     </div>
                                 </form>
