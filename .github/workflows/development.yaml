@@ -29,6 +29,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/_subdomains/abonie-music/
           exclude: |
+            vendor/
             **/.git**
             **/.git*/**
             **/.**
