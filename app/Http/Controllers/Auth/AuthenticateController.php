@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,8 +50,11 @@ class AuthenticateController extends Controller
         ]);
         try {
             $user = User::create($request->all())->assignRole('user');
+            $status = new Status(['status' => true]);
+            $user->statuses()->save($status);
             return redirect()->route('login')->with('success','Your Account success to created');
         } catch (\Throwable $th) {
+            dd($th->getMessage());
             return back()->with('error','Something was wrong when create your account.');
         }
     }
