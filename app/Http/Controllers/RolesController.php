@@ -22,7 +22,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.roles.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string','max:8'],
+        ]);
+        try {
+            DB::table('roles')->insert([
+                'name' => $request->name,
+                'guard_name' => 'user',
+            ]);
+            return back()->with('success','roles berhasil dibuat');
+        } catch (\Throwable $th) {
+            return back()->with('error-store', $th->getMessage());
+        }
+
     }
 
     /**
@@ -54,7 +66,19 @@ class RolesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        try {
+            $request->validate([
+                'name' => ['required', 'string','max:8'],
+            ]);
+            DB::table('roles')->where('id', $id)->update([
+                'name' => $request->name,
+                'guard_name' => 'user',
+            ]);
+            return back()->with('success','roles berhasil dirubah');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
     }
 
     /**
@@ -62,6 +86,11 @@ class RolesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            DB::table('roles')->where('id', $id)->delete();
+            return back()->with('success','roles berhasil dihapus');
+        } catch (\Throwable $th) {
+            return back()->with('error','roles gagal dihapus');
+        }
     }
 }
