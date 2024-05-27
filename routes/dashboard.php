@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\RolesController;
+use App\Http\Controllers\ShortLinkController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,5 +21,8 @@ Route::middleware(["auth"])->group(function () {
         })->name('dashboard');
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
     });
+    include __DIR__. '/shortlink.php';
 });
 Route::post("/logout", [AuthenticateController::class, 'logout'])->name("logout");
+Route::get('/music.co/{short_name}', [ShortLinkController::class, 'redirect']);
+
