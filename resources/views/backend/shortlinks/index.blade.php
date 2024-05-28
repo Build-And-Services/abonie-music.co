@@ -74,32 +74,51 @@
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
-                                    <x-backend.btn.action-detail name="short" :id="$cell->id" :modal="true">
+                                    @if ($cell->statuses->status === 1)
+                                        <p class="flex px-3 justify-center py-1 font-bold text-green-700 border border-green-100 rounded bg-green-50">
+                                            Active
+                                        </p>
+                                    @else
+                                        <p class="flex px-3 justify-center py-1 font-bold text-red-700 border border-red-100 rounded bg-red-50">
+                                            Banned
+                                        </p>
+                                    @endif
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    {{-- <x-backend.btn.action-detail name="short" :id="$cell->id" :modal="true">
                                         detail
-                                    </x-backend.btn.action-detail>
+                                    </x-backend.btn.action-detail> --}}
 
-                                    <x-backend.btn.action-edit name="short" :id="$cell->id" :modal="true" target="#edit-modal-{{ $cell->id }}">
-                                        edit
-                                    </x-backend.btn.action-edit>
+                                    <div class="flex gap-2">
+                                        <x-backend.btn.action-edit name="short" :id="$cell->id" :modal="true" target="#edit-modal-{{ $cell->id }}">
+                                            Detail
+                                        </x-backend.btn.action-edit>
 
-                                    <x-backend.btn.action-delete name="short" :id="$cell->id">
-                                        delete
-                                    </x-backend.btn.action-delete>
+                                        <x-backend.btn.action-delete name="short" :id="$cell->id">
+                                            Delete
+                                        </x-backend.btn.action-delete>
+                                    </div>
                                 </x-backend.column-table>
                             </tr>
-                            <x-backend.modal id="edit-modal-{{$cell->id}}" title="Edit Role">
-                                <form class="space-y-4" action="{{ route('roles.update', $cell->id) }}" method="post">
-                                    @method('PUT')
-                                    @csrf
+                            <x-backend.modal id="edit-modal-{{$cell->id}}" title="Edit Shortlink">
+                                <form class="space-y-4">
                                     <div>
-                                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Name</label>
-                                        <input type="text" name="name" value="{{ $cell->name }}" id="name" class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0" placeholder="Cashier" required="">
-                                        @error('name')
-                                            <p class="text-red-500">{{ $message }}</p>
-                                        @enderror
+                                        <label for="original_link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Original Link</label>
+                                        <input type="text" name="original_link" value="{{ $cell->original_link }}" id="original_link" class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0" required="" readonly>
+                                    </div>
+                                    <div>
+                                        <label for="original_link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Short Name</label>
+                                        <input type="text" name="original_link" value="{{ $cell->short_name }}" id="short_name" class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0" required="" readonly>
+                                    </div>
+                                    <div>
+                                        <label for="original_link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Result Link</label>
+                                        <input type="text" name="original_link" value="{{ $cell->result_link }}" id="result_link" class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0" required="" readonly>
                                     </div>
                                     <div class="mt-6">
-                                        <button type="submit" class="w-full text-white bg-violet-600 border-transparent btn">Submit</button>
+                                        <a href="{{route('short.show', $cell->id)}}">
+                                            <button type="button" class="w-full text-white bg-yellow-600 border-transparent btn">Edit</button>
+                                        </a>
                                     </div>
                                 </form>
                             </x-backend.modal>
