@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -21,6 +22,8 @@ class UserSeeder extends Seeder
             $user->email = "superadmin@mail.com";
             $user->password = Hash::make('password123');
             $user->save();
+            $status = new Status(['status' => true]);
+            $user->statuses()->save($status);
         }
 
         $user = new User();
@@ -28,5 +31,7 @@ class UserSeeder extends Seeder
         $user->email = 'user@mail.com';
         $user->password = Hash::make('password123');
         $user->save();
+        $status = new Status(['status' => true]);
+        $user->statuses()->save($status);
     }
 }

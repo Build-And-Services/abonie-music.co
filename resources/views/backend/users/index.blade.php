@@ -30,16 +30,20 @@
             <div class="card dark:bg-zinc-800 dark:border-zinc-600">
                 <div class="card-body flex items-center justify-between border-b border-gray-100 dark:border-zinc-600">
                     <h6 class="mb-1 text-gray-700 text-15 dark:text-gray-100">List Users</h6>
-                    @can('admin.create')
-                        <button
-                            class="text-white btn bg-violet-500 border-violet-500 hover:bg-violet-600 hover:border-violet-600 focus:bg-violet-600 focus:border-violet-600 focus:ring focus:ring-violet-500/30 active:bg-violet-600 active:border-violet-600"
-                            data-tw-target="#modal-id_form" data-tw-toggle="modal">Create Role</button>
-                    @endcan
+                    <div class="flex items-center gap-2">
+                        <h6 class="text-gray-700 dark:text-gray-100">Filter Status: </h6>
+                        <select id="status-filter"
+                            class="rounded py-0 border border-gray-200 dark:bg-[#383d3b] dark:border-[#747675] dark:text-[#ced4da]">
+                            <option value="all">All</option>
+                            <option value="active">Active</option>
+                            <option value="banned">Banned</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="relative overflow-x-auto card-body">
                     <x-backend.table :datas="$users" :columns="['name', 'email', 'status']" name="roles">
                         @foreach ($users as $user)
-                            <tr>
+                            <tr class="user-row" data-status="{{ $user->statuses->status ? 'active' : 'banned' }}">
                                 <x-backend.column-table>
                                     {{ $loop->iteration }}
                                 </x-backend.column-table>
@@ -52,49 +56,51 @@
                                     {{ $user->email }}
                                 </x-backend.column-table>
                                 <x-backend.column-table>
-                                    {{ $user->email }}
+                                    <span
+                                        class="rounded-full px-2.5 py-1 text-white @if ($user->statuses->status) bg-green-500 border border-green-200 @else bg-red-500 border border-red-200 @endif">
+                                        @if ($user->statuses->status)
+                                            Active
+                                        @else
+                                            Banned
+                                        @endif
+                                    </span>
                                 </x-backend.column-table>
-
 
                                 <x-backend.column-table>
-                                    <x-backend.btn.action-detail name="roles" :id="$user->id" :modal="true">
-                                        detail
+                                    <x-backend.btn.action-detail name="users" :id="$user->id">
+                                        Detail
                                     </x-backend.btn.action-detail>
-
-                                    <x-backend.btn.action-edit name="roles" :id="$user->id" :modal="true"
-                                        target="#edit-modal-{{ $user->id }}">
-                                        edit
-                                    </x-backend.btn.action-edit>
-
-                                    <x-backend.btn.action-delete name="roles" :id="$user->id">
-                                        delete
-                                    </x-backend.btn.action-delete>
+                                    @if ($user->id != Auth::user()->id)
+                                        <x-backend.btn.action-delete name="users" :id="$user->id">
+                                            Delete
+                                        </x-backend.btn.action-delete>
+                                    @endif
                                 </x-backend.column-table>
                             </tr>
-                            <x-backend.modal id="edit-modal-{{ $user->id }}" title="Edit Role">
-                                <form class="space-y-4" action="{{ route('roles.update', $user->id) }}" method="post">
-                                    @method('PUT')
-                                    @csrf
-                                    <div>
-                                        <label for="name"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Name</label>
-                                        <input type="text" name="name" value="{{ $user->name }}" id="name"
-                                            class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0"
-                                            placeholder="Cashier" required="">
-                                        @error('name')
-                                            <p class="text-red-500">{{ $message }}</p>
-                                        @enderror
-                                    </div>
-                                    <div class="mt-6">
-                                        <button type="submit"
-                                            class="w-full text-white bg-violet-600 border-transparent btn">Submit</button>
-                                    </div>
-                                </form>
-                            </x-backend.modal>
                         @endforeach
                     </x-backend.table>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#status-filter').change(function() {
+                var status = $(this).val();
+                $('.user-row').each(function() {
+                    if (status === 'all') {
+                        $(this).show();
+                    } else {
+                        if ($(this).data('status') === status) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </x-backend.dashboard-layout>
