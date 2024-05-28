@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('short_links', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_user')->nullable();
             $table->string('original_link');
             $table->string('short_name')->unique()->nullable();
             $table->string('result_link')->unique();
