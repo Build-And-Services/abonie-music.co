@@ -167,8 +167,9 @@ class ShortLinkController extends Controller
     private function generateUniqueShortCode()
     {
         do {
+            $baseUrl = config('app.url');
             $short_name = Str::random(6);
-        } while (ShortLink::where('short_name', 'http://localhost:8000/music.co/' . $short_name)->exists());
+        } while (ShortLink::where('short_name', $baseUrl . '/music.co/' . $short_name)->exists());
 
         return $short_name;
     }

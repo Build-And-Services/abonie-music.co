@@ -12,7 +12,7 @@ class ShortLinkResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray(Request $request)
     {
         return [
             'id' => $this->id,
@@ -20,6 +20,7 @@ class ShortLinkResource extends JsonResource
             'original_link' => $this->original_link,
             'short_name' => $this->short_name,
             'result_link' => $this->result_link,
+            'status' => $this->statuses->status,
         ];
     }
 }
