@@ -15,4 +15,9 @@ class ShortLink extends Model
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+
+    public function statuses()
+    {
+        return $this->morphOne(Status::class, 'statusable');
+    }
 }
