@@ -11,5 +11,6 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('/v1')->group(function () {
     Route::get('/short', [ApiShortLinkController::class, 'index'])->name('api.short.index');
+    Route::get('/short/{short_name}', [ApiShortLinkController::class, 'show'])->name('api.short.show');
     Route::post('/short/create', [ApiShortLinkController::class, 'store'])->name('api.short.store');
 });
