@@ -33,7 +33,7 @@ class ShortLinkController extends Controller
             DB::beginTransaction();
             if ($request->filled('short_name')) {
                 $baseUrl = config('app.url');
-                $result_link = $baseUrl . '/music.co/' . $request->short_name;
+                $result_link = 'http://shrtlink.co.id/' . $request->short_name;
                 $shortlink = ShortLink::create([
                     'id_user' => Auth::user()->id,
                     'original_link' => $request->original_link,
@@ -45,7 +45,7 @@ class ShortLinkController extends Controller
             } else {
                 $short_name = $this->generateUniqueShortCode();
                 $baseUrl = config('app.url');
-                $result_link = $baseUrl . '/music.co/' . $short_name;
+                $result_link = 'http://shrtlink.co.id/' . $short_name;
                 $shortlink = ShortLink::create([
                     'id_user' => Auth::user()->id,
                     'original_link' => $request->original_link,
@@ -107,14 +107,14 @@ class ShortLinkController extends Controller
                 $data = [];
                 if ($request->filled('short_name')) {
                     $baseUrl = config('app.url');
-                    $result_link = $baseUrl . '/music.co/' . $request->short_name;
+                    $result_link = 'http://shrtlink.co.id/' . $request->short_name;
                     $data['original_link'] = $request->original_link;
                     $data['short_name'] = $request->short_name;
                     $data['result_link'] = $result_link;
                 }else {
                     $short_name = $this->generateUniqueShortCode();
                     $baseUrl = config('app.url');
-                    $result_link = $baseUrl . '/music.co/' . $short_name;
+                    $result_link = 'http://shrtlink.co.id/' . $short_name;
                     $data['original_link'] = $request->original_link;
                     $data['result_link'] = $result_link;
                     $data['short_name'] = $short_name;
@@ -154,22 +154,22 @@ class ShortLinkController extends Controller
     }
 
 
-    public function redirect($short_name)
-    {
-        try {
-            $shortlink = ShortLink::where('short_name', $short_name)->firstOrFail();
-            return redirect($shortlink->original_link);
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error', $th->getMessage());
-        }
-    }
+    // public function redirect($short_name)
+    // {
+    //     try {
+    //         $shortlink = ShortLink::where('short_name', $short_name)->firstOrFail();
+    //         return redirect($shortlink->original_link);
+    //     } catch (\Throwable $th) {
+    //         return redirect()->back()->with('error', $th->getMessage());
+    //     }
+    // }
 
     private function generateUniqueShortCode()
     {
         do {
             $baseUrl = config('app.url');
             $short_name = Str::random(6);
-        } while (ShortLink::where('short_name', $baseUrl . '/music.co/' . $short_name)->exists());
+        } while (ShortLink::where('short_name', 'http://shrtlink.co.id/' . $short_name)->exists());
 
         return $short_name;
     }

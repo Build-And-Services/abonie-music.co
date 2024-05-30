@@ -24,5 +24,5 @@ Route::middleware(["auth"])->group(function () {
     include __DIR__. '/shortlink.php';
 });
 Route::post("/logout", [AuthenticateController::class, 'logout'])->name("logout");
-Route::get('/music.co/{short_name}', [ShortLinkController::class, 'redirect']);
+// Route::get('/music.co/{short_name}', [ShortLinkController::class, 'redirect']);
 
