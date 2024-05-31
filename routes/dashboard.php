@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\BiolinkController;
+use App\Http\Controllers\PresaveController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ShortLinkController;
 use Illuminate\Support\Facades\Route;
@@ -16,15 +17,15 @@ Route::controller(AuthenticateController::class)->group(function () {
 })->middleware("web");
 
 Route::middleware(["auth"])->group(function () {
-    Route::prefix('/dashboard')->group( function () {
-        Route::get('/',function(){
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/', function () {
             return view('backend.index');
         })->name('dashboard');
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
         Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
+        Route::resource('/presave', PresaveController::class, ['name' => 'presave']);
     });
-    include __DIR__. '/shortlink.php';
+    include __DIR__ . '/shortlink.php';
 });
 Route::post("/logout", [AuthenticateController::class, 'logout'])->name("logout");
 // Route::get('/music.co/{short_name}', [ShortLinkController::class, 'redirect']);
-
