@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticateController;
+use App\Http\Controllers\BiolinkController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ShortLinkController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::middleware(["auth"])->group(function () {
             return view('backend.index');
         })->name('dashboard');
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
+        Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
     });
     include __DIR__. '/shortlink.php';
 });
