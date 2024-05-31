@@ -26,95 +26,19 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="app-calendar.html"
-                                class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Calendar</a>
+                            <a href="{{ route('presave.index') }}"
+                                class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">List
+                                Presave</a>
                         </li>
                         <li>
-                            <a href="app-chat.html"
-                                class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Chat</a>
-                        </li>
-
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="false"
-                                class="nav-menu block py-[6.4px] pl-[52.8px] pr-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">
-                                <span data-key="t-apps">Email</span>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="apps-email-inbox.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Inbox</a>
-                                </li>
-                                <li>
-                                    <a href="apps-email-read.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Read
-                                        Email</a>
-                                </li>
-                            </ul>
+                            <a href="#"
+                                class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">List
+                                link Active</a>
                         </li>
                         <li>
-                            <a href="javascript: void(0);" aria-expanded="false"
-                                class="nav-menu block py-[6.4px] pl-[52.8px] pr-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">
-                                <span data-key="t-apps">Invoices</span>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="apps-invoices-list.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Invoice
-                                        List</a>
-                                </li>
-                                <li>
-                                    <a href="apps-invoices-detail.html"
-                                        class="block py-2 pl-14 pr-4 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Invoice
-                                        Detail</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="false"
-                                class="nav-menu block py-[6.4px] pl-[52.8px] pr-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">
-                                <span data-key="t-apps">Contacts</span>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="apps-contacts-grid.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">User
-                                        Grid</a>
-                                </li>
-                                <li>
-                                    <a href="apps-contacts-list.html"
-                                        class="block py-2 pl-14 pr-4 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">User
-                                        List</a>
-                                </li>
-                                <li>
-                                    <a href="apps-contacts-profile.html"
-                                        class="block py-2 pl-14 pr-4 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Profile</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript: void(0);" aria-expanded="false"
-                                class="flex items-center justify-between py-[6.4px] pl-[52.8px] pr-6 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">
-                                <span data-key="t-apps">Blog</span>
-                                <span
-                                    class="text-10 badge rounded-full bg-red-50 px-2 py-0.5 text-end font-medium text-red-400 group-data-[sidebar-size=sm]:hidden">New</span>
-                            </a>
-                            <ul>
-                                <li>
-                                    <a href="apps-blog-grid.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Blog
-                                        Grid</a>
-                                </li>
-                                <li>
-                                    <a href="apps-blog-list.html"
-                                        class="block py-2 pl-14 pr-4 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Blog
-                                        List</a>
-                                </li>
-                                <li>
-                                    <a href="apps-blog-detail.html"
-                                        class="block py-2 pl-14 pr-4 text-[13px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">Blog
-                                        Details</a>
-                                </li>
-                            </ul>
+                            <a href="#"
+                                class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">List
+                                link Banned</a>
                         </li>
                     </ul>
                 </li>
