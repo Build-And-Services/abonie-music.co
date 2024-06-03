@@ -10,6 +10,7 @@
     <title>{{ $title ?? 'Presave - Dashboard' }}</title>
 
     <link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('stylesheet')
     <style>
         .dt-buttons .dt-button {
@@ -45,7 +46,7 @@
     </style>
 </head>
 
-<body data-mode="dark" data-sidebar-size="lg" class="group">
+<body data-mode="light" data-sidebar-size="lg" class="group">
     @if (!$blank)
         <x-backend.sidebar />
         <x-backend.navbar />
@@ -106,6 +107,7 @@
 
     <!-- Datatable init js -->
     <script src="{{ asset('assets-dashboard/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ asset('assets-dashboard/js/pages/nav&tabs.js') }}"></script>
 
     <script src="{{ asset('assets-dashboard/js/app.js') }}"></script>
 
