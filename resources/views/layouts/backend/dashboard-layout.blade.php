@@ -13,6 +13,15 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('stylesheet')
     <style>
+        .dataTables_filter{
+            /* background-color: blue; */
+        }
+        @media (max-width: 767px) {
+            div.dataTables_wrapper div.dataTables_filter {
+                margin-top: 70px;
+                justify-items: center !important;
+            }
+        }
         .dt-buttons .dt-button {
             padding: 10px 20px;
         }
