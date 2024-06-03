@@ -25,6 +25,6 @@
 <!-- Hero Image Part End -->
 <div class="hero-image-area rel z-1" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-offset="50">
     <div class="container container-1370">
-        <img src="assets/hero-5.png" alt="Hero">
+        <img src="assets/hero-new.png" alt="Hero">
     </div>
 </div>
