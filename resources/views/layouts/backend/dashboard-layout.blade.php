@@ -10,8 +10,18 @@
     <title>{{ $title ?? 'Presave - Dashboard' }}</title>
 
     <link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('stylesheet')
     <style>
+        .dataTables_filter{
+            /* background-color: blue; */
+        }
+        @media (max-width: 767px) {
+            div.dataTables_wrapper div.dataTables_filter {
+                margin-top: 70px;
+                justify-items: center !important;
+            }
+        }
         .dt-buttons .dt-button {
             padding: 10px 20px;
         }
@@ -45,7 +55,7 @@
     </style>
 </head>
 
-<body data-mode="dark" data-sidebar-size="lg" class="group">
+<body data-mode="light" data-sidebar-size="lg" class="group">
     @if (!$blank)
         <x-backend.sidebar />
         <x-backend.navbar />
@@ -106,6 +116,7 @@
 
     <!-- Datatable init js -->
     <script src="{{ asset('assets-dashboard/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ asset('assets-dashboard/js/pages/nav&tabs.js') }}"></script>
 
     <script src="{{ asset('assets-dashboard/js/app.js') }}"></script>
 

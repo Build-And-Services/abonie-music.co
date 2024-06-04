@@ -8,13 +8,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Scroll Top Button -->
-            <button class="scroll-top scroll-to-target" data-target="html"><span class="far fa-angle-double-up"></span></button>
         </div>
-    </div>
-
-    <div class="bg-lines line-white">
-       <span></span><span></span>
-       <span></span><span></span>
     </div>
 </footer>

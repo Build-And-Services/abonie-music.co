@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\BiolinkController;
 use App\Http\Controllers\PresaveController;
+use App\Http\Controllers\PreviewController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\ShortLinkController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::middleware(["auth"])->group(function () {
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
         Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
         Route::resource('/presave', PresaveController::class, ['name' => 'presave']);
+        Route::get('/preview', [PreviewController::class, 'index'])->name('preview.biolink.index');
+        Route::get('/preview/presave', [PreviewController::class, 'presave'])->name('preview.presave.index');
     });
     include __DIR__ . '/shortlink.php';
 });
