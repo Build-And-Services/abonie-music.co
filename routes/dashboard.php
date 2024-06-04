@@ -26,6 +26,7 @@ Route::middleware(["auth"])->group(function () {
         Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
         Route::resource('/presave', PresaveController::class, ['name' => 'presave']);
         Route::get('/preview', [PreviewController::class, 'index'])->name('preview.biolink.index');
+        Route::get('/preview/presave', [PreviewController::class, 'presave'])->name('preview.presave.index');
     });
     include __DIR__ . '/shortlink.php';
 });

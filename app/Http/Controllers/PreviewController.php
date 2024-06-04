@@ -14,6 +14,11 @@ class PreviewController extends Controller
         return view('frontend.preview.index');
     }
 
+    public function presave()
+    {
+        return view('frontend.preview.presave');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
