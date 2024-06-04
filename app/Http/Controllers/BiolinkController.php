@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Biolink;
+use App\Models\StyleLink;
 use Illuminate\Http\Request;
 
 class BiolinkController extends Controller
@@ -30,7 +31,37 @@ class BiolinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => 'required|min:3',
+            "description" => 'required',
+            "link" => 'required|unique:biolinks',
+        ]);
+
+        try {
+            // $biolinks = Biolink::create($request->all());
+            if($request->hasFile('profile')) {
+                $filename = time().'.'.$request->file('profile')->getClientOriginalExtension();
+                $filepath = public_path('assets-dashboard/images/users');
+                $request->file('profile')->move($filepath, $filename);
+                $biolinks = Biolink::create([
+                    'name' => $request->name,
+                    'link' => $request->link,
+                    'description' => $request->description,
+                    'photo' => '/assets-dashboard/images/users/'.$filename,
+                ]);
+
+                $style = StyleLink::create([
+                    'biolink_id' => $biolinks->id,
+                ]);
+
+                return redirect()->route('biolink.edit', $biolinks->id)->with('success','Berhasil ditambah');
+            }else{
+                return back()->with('error', 'Profile is required');
+            }
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+        
     }
 
     /**
@@ -46,7 +77,15 @@ class BiolinkController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+            $biolinks = Biolink::findOrFail($id);
+            $styleLink = StyleLink::where('biolink_id', $id)->first();
+            return view("backend.biolink.create", compact("biolinks", "styleLink"));
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+
+        }
+
     }
 
     /**

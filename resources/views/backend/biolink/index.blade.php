@@ -29,9 +29,10 @@
                 <div class="card-body flex items-center justify-between border-b border-gray-100 dark:border-zinc-600">
                     <h6 class="mb-1 text-gray-700 text-15 dark:text-gray-100">List Biolink</h6>
                     @can('bio.create')
-                        <a href="{{ route('biolink.create') }}"
-                            class="text-white btn bg-violet-500 border-violet-500 hover:bg-violet-600 hover:border-violet-600 focus:bg-violet-600 focus:border-violet-600 focus:ring focus:ring-violet-500/30 active:bg-violet-600 active:border-violet-600">Create
-                            Biolink</a>
+                        <button
+                            class="text-white btn bg-violet-500 border-violet-500 hover:bg-violet-600 hover:border-violet-600 focus:bg-violet-600 focus:border-violet-600 focus:ring focus:ring-violet-500/30 active:bg-violet-600 active:border-violet-600"
+                            data-tw-target="#modal-id_form" data-tw-toggle="modal">Create
+                            Biolink</button>
                     @endcan
 
                     <div class="relative z-50 modal @if ($errors->any()) p @else hidden @endif"
@@ -48,14 +49,24 @@
                                             <i class="text-xl text-gray-500 mdi mdi-close dark:text-zinc-100/60"></i>
                                         </button>
                                         <div class="p-5">
-                                            <h3 class="mb-4 text-xl font-medium text-gray-700 dark:text-gray-100">Create
-                                                Role</h3>
-                                            <form class="space-y-4" action="{{ route('roles.store') }}" method="post">
+                                            <h3 class="mb-4 text-xl font-medium text-gray-700 dark:text-gray-100">Buat
+                                                Biolink</h3>
+                                            <form class="space-y-4" action="{{ route('biolink.store') }}" method="post"
+                                                enctype="multipart/form-data">
                                                 @csrf
+                                                <div class="w-32 h-32 rounded-full bg-purple-600 relative mx-auto">
+                                                    <input type="file" name="profile"
+                                                        class="opacity-0 w-full h-full rounded-full bg-gray-400 absolute">
+                                                    <div
+                                                        class="h-8 w-8 bottom-0 right-0 bg-purple-500 rounded-full absolute text-white flex justify-center items-center">
+                                                        <i class="bx bx-edit-alt"></i>
+                                                    </div>
+                                                    <img src="{{ asset('assets-dashboard/images/users/avatar-1.jpg') }}"
+                                                        class="w-32 h-32 rounded-full" alt="">
+                                                </div>
                                                 <div>
                                                     <label for="name"
-                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">New
-                                                        Name</label>
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Nama</label>
                                                     <input type="text" name="name" value="{{ old('name') }}"
                                                         id="name"
                                                         class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0"
@@ -63,6 +74,24 @@
                                                     @error('name')
                                                         <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
+                                                </div>
+                                                <div>
+                                                    <label for="link"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Link</label>
+                                                    <div
+                                                        class="flex items-center border rounded bg-gray-50 dark:border-zinc-600 dark:bg-zinc-600">
+                                                        <div class="px-4 input-group-text dark:text-zinc-100">
+                                                            https://biolink.co.id/</div>
+                                                        <input type="text"
+                                                            class="w-full border-0 border-l border-gray-100 placeholder:text-sm focus:border-violet-100 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 dark:placeholder:text-zinc-100"
+                                                            value="{{ Str::random(6) }}" name="link">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label for="description"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100 ltr:text-left rtl:text-right">Description</label>
+                                                    <textarea name="description" id="description"
+                                                        class="bg-gray-800/5 border border-gray-100 text-gray-900 dark:text-gray-100 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60 focus:ring-0"></textarea>
                                                 </div>
                                                 <div class="mt-6">
                                                     <button type="submit"
@@ -97,7 +126,7 @@
                                         detail
                                     </x-backend.btn.action-detail>
 
-                                    <x-backend.btn.action-edit name="biolink" :id="$cell->id" :modal="true"
+                                    <x-backend.btn.action-edit name="biolink" :id="$cell->id" :modal="false"
                                         target="#edit-modal-{{ $cell->id }}">
                                         edit
                                     </x-backend.btn.action-edit>
@@ -127,7 +156,7 @@
                                             class="w-full text-white bg-violet-600 border-transparent btn">Submit</button>
                                     </div>
                                 </form>
-                            </x-backend.modal> --}}
+                            </x-backend.modal>
                         @endforeach
                     </x-backend.table>
                 </div>
