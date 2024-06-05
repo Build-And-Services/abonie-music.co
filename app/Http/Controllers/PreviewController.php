@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Biolink;
 use Illuminate\Http\Request;
 
 class PreviewController extends Controller
@@ -9,9 +10,10 @@ class PreviewController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        return view('frontend.preview.index');
+        $biolink = Biolink::where("id", $id)->first();
+        return view('frontend.preview.index', compact('biolink'));
     }
 
     public function presave()

@@ -66,9 +66,16 @@
                                                 <div class="simplebar-content-wrapper"
                                                     style="height: auto; overflow: hidden;">
                                                     <div class="simplebar-content" style="padding: 0px 12px;">
-                                                        <div class="w-20 h-20 mx-auto">
-                                                            <img src="{{ asset($biolinks->photo) }}" alt=""
-                                                                class="rounded-full w-full h-full object-cover">
+                                                        <div
+                                                            class="w-32 h-32 rounded-full bg-purple-600 relative mx-auto">
+                                                            <input type="file" name="profile"
+                                                                class="opacity-0 w-full h-full rounded-full bg-gray-400 absolute">
+                                                            <div
+                                                                class="h-8 w-8 bottom-0 right-0 bg-purple-500 rounded-full absolute text-white flex justify-center items-center">
+                                                                <i class="bx bx-edit-alt"></i>
+                                                            </div>
+                                                            <img src="{{ asset($biolinks->profile) }}"
+                                                                class="w-32 h-32 rounded-full" alt="">
                                                         </div>
 
                                                         <div class="grids grid-cols-12 mt-5">
@@ -77,8 +84,7 @@
                                                                     class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Name</label>
                                                                 <input
                                                                     class="w-full placeholder:text-13 text-13 py-1.5 rounded border-gray-100 focus:border focus:border-violet-50 focus:ring focus:ring-violet-500/20  dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 placeholder:text-gray-800 dark:text-zinc-100"
-                                                                    type="text" placeholder="Artisanal kale"
-                                                                    value="{{ $biolinks->name }}">
+                                                                    type="text" value="{{ $biolinks->name }}">
                                                             </div>
                                                             <div class="mb-4">
                                                                 <label for="example-text-input"
@@ -98,6 +104,12 @@
                                                                         class="w-full border-0 border-l border-gray-100 placeholder:text-sm focus:border-violet-100 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 dark:placeholder:text-zinc-100"
                                                                         value="{{ $biolinks->link }}" name="link">
                                                                 </div>
+                                                            </div>
+                                                            <div class="mb-4 w-full">
+                                                                <button
+                                                                    class="px-6 py-2 w-full rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white">
+                                                                    Simpan
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -284,14 +296,14 @@
 
                     </div>
                 </div>
-                <div class="card-footer px-3 w-full">
+                {{-- <div class="card-footer px-3 w-full">
                     <div class="mb-4 w-full">
                         <button
                             class="px-6 py-2 w-full rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white">
                             Simpan
                         </button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="col-span-12 md:col-span-5">
@@ -306,7 +318,7 @@
                 transform-origin: 0 0;
                 background-color: #222;
                 overflow: hidden;">
-                <iframe src="https://getbootstrap.com/docs/4.1/utilities/spacing/" height="100%"
+                <iframe src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%"
                     width="100%"></iframe>
             </div>
         </div>
