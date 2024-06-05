@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Biolink extends Model
+class View extends Model
 {
     use HasFactory;
-
-    protected $guarded = ['id'];
+    protected $fillable = ['count'];
 
     public function viewable()
     {
-        return $this->morphOne(View::class, 'viewable');
+        return $this->morphTo();
     }
 }

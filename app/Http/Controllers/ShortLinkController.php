@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\View;
 use App\Models\Status;
 use App\Models\ShortLink;
 use Illuminate\Support\Str;
@@ -41,6 +42,8 @@ class ShortLinkController extends Controller
                     'result_link' => $result_link,
                 ]);
                 $status = new Status(['status' => true]);
+                $count = new View(['count' => 0]);
+                $shortlink->viewable()->save($count);
                 $shortlink->statuses()->save($status);
             } else {
                 $short_name = $this->generateUniqueShortCode();
@@ -53,6 +56,8 @@ class ShortLinkController extends Controller
                     'result_link' => $result_link,
                 ]);
                 $status = new Status(['status' => true]);
+                $count = new View(['count' => 0]);
+                $shortlink->viewable()->save($count);
                 $shortlink->statuses()->save($status);
             }
 
