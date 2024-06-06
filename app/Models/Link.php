@@ -11,4 +11,8 @@ class Link extends Model
 
     protected $guarded = ['id'];
 
+    public function linkable()
+    {
+        return $this->morphTo();
+    }
 }

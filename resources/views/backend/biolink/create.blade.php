@@ -66,52 +66,65 @@
                                                 <div class="simplebar-content-wrapper"
                                                     style="height: auto; overflow: hidden;">
                                                     <div class="simplebar-content" style="padding: 0px 12px;">
-                                                        <div
-                                                            class="w-32 h-32 rounded-full bg-purple-600 relative mx-auto">
-                                                            <input type="file" name="profile"
-                                                                class="opacity-0 w-full h-full rounded-full bg-gray-400 absolute">
+                                                        <form action="{{ route('biolink.update', $biolinks->id) }}"
+                                                            method="post" id="form-information"
+                                                            enctype="multipart/form-data">
+                                                            @method('PUT')
+                                                            @csrf
                                                             <div
-                                                                class="h-8 w-8 bottom-0 right-0 bg-purple-500 rounded-full absolute text-white flex justify-center items-center">
-                                                                <i class="bx bx-edit-alt"></i>
-                                                            </div>
-                                                            <img src="{{ asset($biolinks->profile) }}"
-                                                                class="w-32 h-32 rounded-full" alt="">
-                                                        </div>
-
-                                                        <div class="grids grid-cols-12 mt-5">
-                                                            <div class="mb-4">
-                                                                <label for="example-text-input"
-                                                                    class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Name</label>
-                                                                <input
-                                                                    class="w-full placeholder:text-13 text-13 py-1.5 rounded border-gray-100 focus:border focus:border-violet-50 focus:ring focus:ring-violet-500/20  dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 placeholder:text-gray-800 dark:text-zinc-100"
-                                                                    type="text" value="{{ $biolinks->name }}">
-                                                            </div>
-                                                            <div class="mb-4">
-                                                                <label for="example-text-input"
-                                                                    class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Description</label>
-                                                                <input
-                                                                    class="w-full placeholder:text-13 text-13 py-1.5 rounded border-gray-100 focus:border focus:border-violet-50 focus:ring focus:ring-violet-500/20  dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 placeholder:text-gray-800 dark:text-zinc-100"
-                                                                    type="text" name="description"
-                                                                    value="{{ $biolinks->description }}">
-                                                            </div>
-                                                            <div class="mb-4">
+                                                                class="w-32 h-32 rounded-full bg-purple-600 relative mx-auto">
+                                                                <input type="file" name="profile"
+                                                                    class="opacity-0 w-full h-full rounded-full bg-gray-400 absolute"
+                                                                    id="profile-input">
                                                                 <div
-                                                                    class="flex items-center border rounded bg-gray-50 dark:border-zinc-600 dark:bg-zinc-600">
+                                                                    class="h-8 w-8 bottom-0 right-0 bg-purple-500 rounded-full absolute text-white flex justify-center items-center">
+                                                                    <i class="bx bx-edit-alt"></i>
+                                                                </div>
+                                                                <img src="{{ asset($biolinks->photo) }}"
+                                                                    class="w-32 h-32 object-cover rounded-full"
+                                                                    alt="" id="img-preview">
+                                                            </div>
+
+                                                            <div class="grids grid-cols-12 mt-5">
+
+                                                                <div class="mb-4">
+                                                                    <label for="example-text-input"
+                                                                        class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Name</label>
+                                                                    <input
+                                                                        class="w-full placeholder:text-13 text-13 py-1.5 rounded border-gray-100 focus:border focus:border-violet-50 focus:ring focus:ring-violet-500/20  dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 placeholder:text-gray-800 dark:text-zinc-100"
+                                                                        type="text" name="name" id="name-input"
+                                                                        value="{{ $biolinks->name }}">
+                                                                </div>
+                                                                <div class="mb-4">
+                                                                    <label for="example-text-input"
+                                                                        class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Description</label>
+                                                                    <input
+                                                                        class="w-full placeholder:text-13 text-13 py-1.5 rounded border-gray-100 focus:border focus:border-violet-50 focus:ring focus:ring-violet-500/20  dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 placeholder:text-gray-800 dark:text-zinc-100"
+                                                                        type="text" name="description" type="text"
+                                                                        name="name" id="description-input"
+                                                                        value="{{ $biolinks->description }}">
+                                                                </div>
+                                                                <div class="mb-4">
                                                                     <div
-                                                                        class="px-4 input-group-text dark:text-zinc-100">
-                                                                        https://biolink.co.id/</div>
-                                                                    <input type="text"
-                                                                        class="w-full border-0 border-l border-gray-100 placeholder:text-sm focus:border-violet-100 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 dark:placeholder:text-zinc-100"
-                                                                        value="{{ $biolinks->link }}" name="link">
+                                                                        class="flex items-center border rounded bg-gray-50 dark:border-zinc-600 dark:bg-zinc-600">
+                                                                        <div
+                                                                            class="px-4 input-group-text dark:text-zinc-100">
+                                                                            https://biolink.co.id/</div>
+                                                                        <input type="text"
+                                                                            class="w-full border-0 border-l border-gray-100 placeholder:text-sm focus:border-violet-100 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700 dark:border-zinc-600 dark:text-zinc-100 dark:placeholder:text-zinc-100"
+                                                                            value="{{ $biolinks->link }}"
+                                                                            name="name" id="link-input"
+                                                                            name="link">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-4 w-full">
+                                                                    <button id="button-submit"
+                                                                        class="px-6 py-2 w-full rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white">
+                                                                        Simpan
+                                                                    </button>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-4 w-full">
-                                                                <button
-                                                                    class="px-6 py-2 w-full rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white">
-                                                                    Simpan
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,7 +144,7 @@
                             </div>
 
                             <div class="tab-pane hidden" id="buy-tab1" role="tabpanel">
-                                <div class="px-3" data-simplebar="init" style="max-height: 352px;">
+                                <div class="px-3" data-simplebar="init">
                                     <div class="simplebar-wrapper" style="margin: 0px -12px;">
                                         <div class="simplebar-height-auto-observer-wrapper">
                                             <div class="simplebar-height-auto-observer"></div>
@@ -149,12 +162,20 @@
                                                                 Social Links
                                                             </h1>
 
-                                                            <div class="flex flex-col w-full">
+                                                            <div class="flex flex-col w-full gap-2" id="link-content">
                                                                 <button
-                                                                    class="px-6 py-2 rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white w-full text-xl font-semibold">
+                                                                    class="px-6 py-2 mb-5 rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white w-full text-xl font-semibold"
+                                                                    data-tw-target="#modal-add_link"
+                                                                    data-tw-toggle="modal">
                                                                     <i class="bx bx-plus text-xl font-semibold"></i>
-                                                                    Add Link
+                                                                    Add Links
                                                                 </button>
+                                                                @foreach ($biolinks->linkable as $item)
+                                                                    <a href="{{ $item->link }}"
+                                                                        class="px-6 py-2 rounded-full border text-center border-violet-600 duration-500 transition-all text-violet-800 w-full text-xl font-semibold">
+                                                                        {{ $item->title }}
+                                                                    </a>
+                                                                @endforeach
                                                             </div>
                                                         </div>
                                                     </div>
@@ -191,7 +212,8 @@
                                                             Background Color
                                                         </h1>
 
-                                                        <div class="grid grid-cols-4 gap-2">
+                                                        <div
+                                                            class="grid !grid-cols-2 sm:!grid-cols-3 md:!grid-cols-4 gap-2">
                                                             <div
                                                                 class="h-72 cursor-pointer bg-red-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
                                                                 <h1 class="hidden group-hover:block">Choose Me</h1>
@@ -296,14 +318,6 @@
 
                     </div>
                 </div>
-                {{-- <div class="card-footer px-3 w-full">
-                    <div class="mb-4 w-full">
-                        <button
-                            class="px-6 py-2 w-full rounded bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-800 hover:to-indigo-800 duration-500 transition-all text-white">
-                            Simpan
-                        </button>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <div class="col-span-12 md:col-span-5">
@@ -318,9 +332,100 @@
                 transform-origin: 0 0;
                 background-color: #222;
                 overflow: hidden;">
-                <iframe src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%"
-                    width="100%"></iframe>
+                <div id="preview" class="w-full h-full">
+                </div>
             </div>
         </div>
     </div>
+
+
+    <x-backend.modal.add-link-bio :biolink="$biolinks" />
+
+    @push('scripts')
+        {{-- information --}}
+        <script>
+            $(document).ready(function() {
+                document.getElementById("preview").innerHTML =
+                    '<iframe id="preview" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>';
+            });
+
+            function postAjax(formData) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('biolink.update', $biolinks->id) }}', // Update with your route
+                    contentType: 'multipart/form-data',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token
+                    },
+                    success: function(response) {
+                        // alert("ok");
+                        document.getElementById("preview").innerHTML =
+                            '<iframe id="previews" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>'
+                    },
+                });
+            }
+
+            document.getElementById('profile-input').addEventListener('change', function(event) {
+                const input = event.target;
+                if (input.files && input.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('img-preview').src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+                var formData = new FormData();
+                formData.append('profile', input.files[0]);
+                formData.append('name', $('#name-input').val());
+                formData.append('description', $('#description-input').val());
+                formData.append('link', $('#link-input').val());
+                formData.append('_method', 'put');
+
+                // Send AJAX request
+                postAjax(formData)
+            });
+            $('#form-information').on('submit', function(e) {
+                e.preventDefault();
+                var formData = new FormData();
+                formData.append('name', $('#name-input').val());
+                formData.append('description', $('#description-input').val());
+                formData.append('link', $('#link-input').val());
+                formData.append('_method', 'put');
+
+                postAjax(formData)
+            });
+        </script>
+
+        {{-- link --}}
+        <script>
+            $('#link-form').on('submit', function(e) {
+                e.preventDefault();
+                var $form = $(this)
+                var serializedData = $form.serialize();
+                console.log(serializedData)
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('biolink.store.link', $biolinks->id) }}', // Update with your route
+                    data: serializedData,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token
+                    },
+                    success: function(response) {
+                        $('#link-content').append(`
+                        <a href="${$('#link-link-input').val()}" class="px-6 py-2 rounded-full border text-center border-violet-600 duration-500 transition-all text-violet-800 w-full text-xl font-semibold">
+                                                                        ${$('#name-link-input').val()}
+                                                                    </a>
+                        `)
+                        $('#modal-add_link').toggleClass('hidden');
+                        document.getElementById("preview").innerHTML =
+                            '<iframe id="previews" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>';
+                    },
+                });
+            })
+        </script>
+    @endpush
 </x-backend.dashboard-layout>

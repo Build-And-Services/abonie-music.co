@@ -15,4 +15,9 @@ class Biolink extends Model
     {
         return $this->morphOne(View::class, 'viewable');
     }
+    
+    public function linkable()
+    {
+        return $this->morphMany(Link::class, 'linkable');
+    }
 }
