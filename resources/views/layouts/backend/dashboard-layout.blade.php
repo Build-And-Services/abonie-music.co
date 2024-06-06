@@ -7,21 +7,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Presave - Dashboard' }}</title>
 
     <link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('stylesheet')
     <style>
-        .dataTables_filter{
+        .dataTables_filter {
             /* background-color: blue; */
         }
+
         @media (max-width: 767px) {
             div.dataTables_wrapper div.dataTables_filter {
                 margin-top: 70px;
                 justify-items: center !important;
             }
         }
+
         .dt-buttons .dt-button {
             padding: 10px 20px;
         }
@@ -120,6 +123,7 @@
 
     <script src="{{ asset('assets-dashboard/js/app.js') }}"></script>
 
+    @stack('scripts')
 </body>
 
 </html>

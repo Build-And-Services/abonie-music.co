@@ -24,9 +24,10 @@ Route::middleware(["auth"])->group(function () {
         })->name('dashboard');
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
         Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
+        Route::post('/biolink/link/{id}', [BiolinkController::class, 'addLink'])->name('biolink.store.link');
         Route::resource('/presave', PresaveController::class, ['name' => 'presave']);
-        Route::get('/preview/{id}', [PreviewController::class, 'index'])->name('preview.biolink.index');
         Route::get('/preview/presave', [PreviewController::class, 'presave'])->name('preview.presave.index');
+        Route::get('/preview/{id}', [PreviewController::class, 'index'])->name('preview.biolink.index');
     });
     include __DIR__ . '/shortlink.php';
 });

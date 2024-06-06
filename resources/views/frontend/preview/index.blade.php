@@ -13,7 +13,7 @@
     <div class="mx-auto mb-28 flex flex-col px-4 py-6 md:max-w-2xl">
         <div class="mx-auto flex flex-col gap-1">
             <div class="profile-image mx-auto h-24 w-24">
-                <img src="{{ asset($biolink->photo) }}" alt="" class="h-24 w-24 rounded-full">
+                <img src="{{ asset($biolink->photo) }}" alt="" class="h-24 w-24 rounded-full object-cover">
             </div>
             <div class="information-section mt-5 space-y-5 text-center">
                 <h2 class="text-2xl font-semibold">{{ $biolink->name }}</h2>
@@ -22,30 +22,12 @@
         </div>
 
         <div class="links mt-5 grid grid-cols-6 gap-8">
-            <div
-                class="group w-full col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
-                <a href="#" class="mx-auto text-lg font-semibold">Racun Shoope</a>
-            </div>
-            <div
-                class="group col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
-                <a href="#" class="mx-auto text-lg font-semibold">Racun Shoope</a>
-            </div>
-            <div
-                class="group col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
-                <a href="#" class="mx-auto text-lg font-semibold">Racun Shoope</a>
-            </div>
-            <div
-                class="group col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
-                <a href="#" class="mx-auto text-lg font-semibold">Racun Shoope</a>
-            </div>
-            <div
-                class="group col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
-                <a href="#" class="mx-auto text-lg font-semibold">Racun Shoope</a>
-            </div>
-            <div
-                class="group col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
-                <a href="#" class="mx-auto text-lg font-semibold">Racun Shoope</a>
-            </div>
+            @foreach ($biolink->linkable as $item)
+                <div
+                    class="group w-full col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
+                    <a href="{{ $item->link }}" class="mx-auto text-lg font-semibold">{{ $item->title }}</a>
+                </div>
+            @endforeach
         </div>
 
         <div class="link-social mt-10 flex items-center justify-center gap-4">
