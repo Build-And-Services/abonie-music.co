@@ -23,7 +23,7 @@ class CountViewResource extends JsonResource
                 'viewable_type' => 'shortlink',
                 'shortlink_id' => $this->id,
                 'short_name' => $this->short_name,
-                'count' => $viewable->count
+                'count' => $viewable->count + 1
             ];
         } elseif ($viewableType === 'App\\Models\\Biolink') {
             return [
@@ -31,7 +31,7 @@ class CountViewResource extends JsonResource
                 'viewable_type' => 'biolink',
                 'biolink_id' => $this->id,
                 'name' => $this->name,
-                'count' => $viewable->view->count
+                'count' => $viewable->count + 1
             ];
         }
 

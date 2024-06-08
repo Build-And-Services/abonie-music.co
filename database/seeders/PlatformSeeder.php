@@ -28,7 +28,7 @@ class PlatformSeeder extends Seeder
             ],
             [
                 'name' => 'X',
-                'thumbnail' => url("/img/platforms/twitter.png"),
+                'thumbnail' => url("/img/platforms/x.png"),
                 'url' => 'https://x.com/',
                 'type' => 'BIOLINK',
             ],
@@ -53,7 +53,7 @@ class PlatformSeeder extends Seeder
             [
                 'name' => 'WhatsApp',
                 'thumbnail' => url("/img/platforms/whatsapp.png"),
-                'url' => 'https://whatsapp.com/',
+                'url' => 'https://wa.me/',
                 'type' => 'BIOLINK',
             ],
             [

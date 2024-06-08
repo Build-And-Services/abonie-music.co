@@ -11,11 +11,16 @@ class Biolink extends Model
 
     protected $guarded = ['id'];
 
+    public function statuses()
+    {
+        return $this->morphOne(Status::class, 'statusable');
+    }
+
     public function viewable()
     {
         return $this->morphOne(View::class, 'viewable');
     }
-    
+
     public function linkable()
     {
         return $this->morphMany(Link::class, 'linkable');

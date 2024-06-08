@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Biolink;
 use App\Models\Link;
+use App\Models\View;
+use App\Models\Status;
+use App\Models\Biolink;
 use App\Models\StyleLink;
 use Illuminate\Http\Request;
 
@@ -24,7 +26,7 @@ class BiolinkController extends Controller
     public function create()
     {
         return view("backend.biolink.create");
-        
+
     }
 
     /**
@@ -51,6 +53,11 @@ class BiolinkController extends Controller
                     'photo' => '/assets-dashboard/images/users/'.$filename,
                 ]);
 
+                $status = new Status(['status' => true]);
+                $count = new View(['count' => 0]);
+                $biolinks->viewable()->save($count);
+                $biolinks->statuses()->save($status);
+
                 $style = StyleLink::create([
                     'biolink_id' => $biolinks->id,
                 ]);
@@ -62,7 +69,7 @@ class BiolinkController extends Controller
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());
         }
-        
+
     }
 
     /**
@@ -81,7 +88,7 @@ class BiolinkController extends Controller
         try {
             $biolinks = Biolink::findOrFail($id);
             $styleLink = StyleLink::where('biolink_id', $id)->first();
-            
+
             return view("backend.biolink.create", compact("biolinks", "styleLink"));
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());
@@ -109,14 +116,14 @@ class BiolinkController extends Controller
                 $biolinks->link = $request->link;
             }
             if($request->hasFile('profile')){
-         
+
                 $filename = time().'.'.$request->file('profile')->getClientOriginalExtension();
                 $filepath = public_path('assets-dashboard/images/users');
                 $request->file('profile')->move($filepath, $filename);
                 $biolinks->photo = '/assets-dashboard/images/users/'.$filename;
             }
             $biolinks->save();
-    
+
             return response()->json([
                 "message" => "berhasil merubah",
                 "status" => "200"
