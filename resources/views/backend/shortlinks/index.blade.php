@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-x-auto card-body">
-                    <x-backend.table :datas="$shorts" :columns="['original link', 'short name', 'result link', 'status']"  name="short">
+                    <x-backend.table :datas="$shorts" :columns="['original link', 'short name', 'result link', 'views' , 'status']"  name="short">
                         @foreach ($shorts as $cell)
                             <tr class="short-row" data-status="{{ $cell->statuses->status ? 'active' : 'banned' }}">
                                 <x-backend.column-table>
@@ -80,6 +80,18 @@
 
                                 <x-backend.column-table>
                                     {{ $cell->result_link }}
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    @if ($cell->viewable->count === 0)
+                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                            Not yet used
+                                        </p>
+                                        @else
+                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                            {{ $cell->viewable->count }}
+                                        </p>
+                                    @endif
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>

@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="relative overflow-x-auto card-body">
-                    <x-backend.table :datas="$biolinks" :columns="['name', 'link']" name="biolinks">
+                    <x-backend.table :datas="$biolinks" :columns="['name', 'link', 'views', 'status']" name="biolinks">
                         @foreach ($biolinks as $cell)
                             <tr>
                                 <x-backend.column-table>
@@ -119,6 +119,30 @@
 
                                 <x-backend.column-table>
                                     {{ $cell->link }}
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    @if ($cell->viewable->count === 0)
+                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                            Not yet viewed
+                                        </p>
+                                        @else
+                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                            {{ $cell->viewable->count }}
+                                        </p>
+                                    @endif
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    @if ($cell->statuses->status === 1)
+                                        <p class="flex px-3 justify-center py-1 font-bold text-green-700 border border-green-100 rounded bg-green-50">
+                                            Active
+                                        </p>
+                                    @else
+                                        <p class="flex px-3 justify-center py-1 font-bold text-red-700 border border-red-100 rounded bg-red-50">
+                                            Banned
+                                        </p>
+                                    @endif
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
