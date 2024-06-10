@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Biolink;
+use App\Models\Presave;
 use Illuminate\Http\Request;
 
 class PreviewController extends Controller
@@ -16,9 +17,10 @@ class PreviewController extends Controller
         return view('frontend.preview.index', compact('biolink'));
     }
 
-    public function presave()
+    public function presave($id)
     {
-        return view('frontend.preview.presave');
+        $presave = Presave::with('links')->where('id', $id)->first();
+        return view('frontend.preview.presave', compact('presave'));
     }
 
     /**

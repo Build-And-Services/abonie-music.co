@@ -74,7 +74,7 @@
                                                     <input type="text" name="url" value="{{ old('url') }}"
                                                         id="url"
                                                         class="block w-full rounded border border-gray-100 bg-gray-800/5 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-0 focus:ring-blue-500 dark:border-zinc-600 dark:bg-zinc-700/50 dark:text-gray-100 dark:placeholder-gray-400 dark:placeholder:text-zinc-100/60"
-                                                        placeholder="ex: www.instagram.com" required>
+                                                        placeholder="ex: www.instagram.com">
                                                     @error('url')
                                                         <p class="text-red-500">{{ $message }}</p>
                                                     @enderror
@@ -122,7 +122,7 @@
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
-                                    <img src="{{ $cell->thumbnail }}" alt="" width="30" height="30"
+                                    <img src="{{ $cell->thumbnail }}" alt="" width="60" height="60"
                                         class="text-center">
 
                                 </x-backend.column-table>

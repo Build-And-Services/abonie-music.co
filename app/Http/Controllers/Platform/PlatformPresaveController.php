@@ -43,8 +43,8 @@ class PlatformPresaveController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'url' => 'required|max:255',
-            'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'url' => 'max:255',
+            'thumbnail' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $thumbnailName = time() . '.' . $request->thumbnail->extension();
         $request->thumbnail->move(public_path('assets-dashboard/images/platform/presave'), $thumbnailName);
