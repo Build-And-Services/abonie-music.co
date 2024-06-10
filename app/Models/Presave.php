@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Presave extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function links()
+    {
+        return $this->hasMany(LinkPresave::class);
+    }
 }

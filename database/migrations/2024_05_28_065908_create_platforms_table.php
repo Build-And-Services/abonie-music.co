@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('thumbnail');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->enum('type', ['BIOLINK', 'PRESAVE']);
             $table->timestamps();
         });
