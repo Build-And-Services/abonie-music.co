@@ -21,6 +21,7 @@ class ShortLinkResource extends JsonResource
             'short_name' => $this->short_name,
             'result_link' => $this->result_link,
             'status' => $this->statuses->status,
+            'count' => $this->viewable->count,
         ];
     }
 }

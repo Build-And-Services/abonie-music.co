@@ -20,4 +20,9 @@ class ShortLink extends Model
     {
         return $this->morphOne(Status::class, 'statusable');
     }
+
+    public function viewable()
+    {
+        return $this->morphOne(View::class, 'viewable');
+    }
 }

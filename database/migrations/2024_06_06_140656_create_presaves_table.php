@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('links', function (Blueprint $table) {
+        Schema::create('presaves', function (Blueprint $table) {
             $table->id();
-            $table->morphs('linkable');
-            $table->string('title');
-            $table->string('link');
-            $table->unsignedBigInteger('platform_id')->nullable();
-            $table->foreign('platform_id')->references('id')->on('platforms')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('links');
+        Schema::dropIfExists('presaves');
     }
 };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\ShortLinkResource;
 use App\Models\Status;
 use App\Models\ShortLink;
+use App\Models\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,6 +46,9 @@ class ApiShortLinkController extends BaseController
                     'result_link' => $result_link,
                 ]);
                 $status = new Status(['status' => true]);
+                $count = new View(['count' => 0]);
+
+                $shortlink->viewable()->save($count);
                 $shortlink->statuses()->save($status);
             } else {
                 $short_name = $this->generateUniqueShortCode();

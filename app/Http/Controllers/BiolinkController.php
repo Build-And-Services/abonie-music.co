@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Link;
+use App\Models\View;
+use App\Models\Status;
 use App\Models\Biolink;
+use App\Models\StyleLink;
 use Illuminate\Http\Request;
 
 class BiolinkController extends Controller
@@ -22,7 +26,7 @@ class BiolinkController extends Controller
     public function create()
     {
         return view("backend.biolink.create");
-        
+
     }
 
     /**
@@ -30,7 +34,42 @@ class BiolinkController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => 'required|min:3',
+            "description" => 'required',
+            "link" => 'required|unique:biolinks',
+        ]);
+
+        try {
+            // $biolinks = Biolink::create($request->all());
+            if($request->hasFile('profile')) {
+                $filename = time().'.'.$request->file('profile')->getClientOriginalExtension();
+                $filepath = public_path('assets-dashboard/images/users');
+                $request->file('profile')->move($filepath, $filename);
+                $biolinks = Biolink::create([
+                    'name' => $request->name,
+                    'link' => $request->link,
+                    'description' => $request->description,
+                    'photo' => '/assets-dashboard/images/users/'.$filename,
+                ]);
+
+                $status = new Status(['status' => true]);
+                $count = new View(['count' => 0]);
+                $biolinks->viewable()->save($count);
+                $biolinks->statuses()->save($status);
+
+                $style = StyleLink::create([
+                    'biolink_id' => $biolinks->id,
+                ]);
+
+                return redirect()->route('biolink.edit', $biolinks->id)->with('success','Berhasil ditambah');
+            }else{
+                return back()->with('error', 'Profile is required');
+            }
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+
     }
 
     /**
@@ -46,7 +85,16 @@ class BiolinkController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        try {
+            $biolinks = Biolink::findOrFail($id);
+            $styleLink = StyleLink::where('biolink_id', $id)->first();
+
+            return view("backend.biolink.create", compact("biolinks", "styleLink"));
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+
+        }
+
     }
 
     /**
@@ -54,7 +102,57 @@ class BiolinkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            // return $request->all();
+            $biolinks = Biolink::findOrFail($id);
+
+            if($request->name){
+                $biolinks->name = $request->name;
+            }
+            // if($request->description){
+                $biolinks->description = $request->description;
+            // }
+            if($request->link){
+                $biolinks->link = $request->link;
+            }
+            if($request->hasFile('profile')){
+
+                $filename = time().'.'.$request->file('profile')->getClientOriginalExtension();
+                $filepath = public_path('assets-dashboard/images/users');
+                $request->file('profile')->move($filepath, $filename);
+                $biolinks->photo = '/assets-dashboard/images/users/'.$filename;
+            }
+            $biolinks->save();
+
+            return response()->json([
+                "message" => "berhasil merubah",
+                "status" => "200"
+            ], 200);
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+    }
+
+    public function addLink(Request $request, string $id){
+        $request->validate([
+            'name' => 'required',
+            'link' => 'required'
+        ]);
+
+        try {
+            $biolinks = Biolink::findOrFail($id);
+            $link = new Link([
+                'title' => $request->name,
+                'link' => $request->link,
+                'platform_id' => 1,
+            ]);
+            $biolinks->linkable()->save($link);
+
+            return back();
+        } catch (\Throwable $th) {
+            //throw $th;
+            dd($th->getMessage());
+        }
     }
 
     /**

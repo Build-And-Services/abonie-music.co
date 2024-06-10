@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Link extends Model
+class View extends Model
 {
     use HasFactory;
+    protected $fillable = ['count'];
 
-    protected $guarded = ['id'];
-
-    public function linkable()
+    public function viewable()
     {
         return $this->morphTo();
     }

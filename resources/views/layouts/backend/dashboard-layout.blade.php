@@ -7,21 +7,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $title ?? 'Presave - Dashboard' }}</title>
 
     <link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('stylesheet')
     <style>
-        .dataTables_filter{
+        .dataTables_filter {
             /* background-color: blue; */
         }
+
         @media (max-width: 767px) {
             div.dataTables_wrapper div.dataTables_filter {
                 margin-top: 70px;
                 justify-items: center !important;
             }
         }
+
+        .dt-buttons .dt-button {
+            padding: 10px 20px;
+        }
+
+        =======<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>{{ $title ?? 'Presave - Dashboard' }}</title><link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">@vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @stack('stylesheet')
+
+        <style>.dataTables_filter {
+            /* background-color: blue; */
+        }
+
+        >>>>>>>48da25e (wip: feature add presave) @media (max-width: 767px) {
+            div.dataTables_wrapper div.dataTables_filter {
+                margin-top: 70px;
+                justify-items: center !important;
+            }
+        }
+
         .dt-buttons .dt-button {
             padding: 10px 20px;
         }
@@ -61,12 +83,12 @@
         <x-backend.navbar />
 
         <div class="main-content group-data-[sidebar-size=sm]:ml-[70px]">
-            <div class="min-h-screen page-content dark:bg-zinc-700">
+            <div class="page-content min-h-screen dark:bg-zinc-700">
                 {{ $slot }}
 
                 <!-- Footer Start -->
                 <footer
-                    class="absolute bottom-0 left-0 right-0 px-5 py-5 bg-white border-t footer border-gray-50 dark:bg-zinc-700 dark:border-zinc-600 dark:text-gray-200">
+                    class="footer absolute bottom-0 left-0 right-0 border-t border-gray-50 bg-white px-5 py-5 dark:border-zinc-600 dark:bg-zinc-700 dark:text-gray-200">
                     <div class="grid grid-cols-2 text-gray-500 dark:text-zinc-100">
                         <div class="grow">
                             &copy;
@@ -74,8 +96,8 @@
                                 document.write(new Date().getFullYear());
                             </script> buildandservice
                         </div>
-                        <div class="hidden md:inline-block text-end">Design & Develop by <a
-                                href="https://buildandservice.tech/" class="underline text-violet-500">Build And
+                        <div class="hidden text-end md:inline-block">Design & Develop by <a
+                                href="https://buildandservice.tech/" class="text-violet-500 underline">Build And
                                 Service</a></div>
 
                     </div>
@@ -119,6 +141,9 @@
     <script src="{{ asset('assets-dashboard/js/pages/nav&tabs.js') }}"></script>
 
     <script src="{{ asset('assets-dashboard/js/app.js') }}"></script>
+
+    @stack('scripts')
+
 
 </body>
 
