@@ -15,4 +15,19 @@ class Presave extends Model
     {
         return $this->hasMany(LinkPresave::class);
     }
+
+    public function statuses()
+    {
+        return $this->morphOne(Status::class, 'statusable');
+    }
+
+    public function viewable()
+    {
+        return $this->morphOne(View::class, 'viewable');
+    }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

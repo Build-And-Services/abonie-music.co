@@ -27,7 +27,18 @@
         <div class="col-span-12">
             <div class="card dark:border-zinc-600 dark:bg-zinc-800">
                 <div class="card-body flex items-center justify-between border-b border-gray-100 dark:border-zinc-600">
-                    <h6 class="text-15 mb-1 text-gray-700 dark:text-gray-100">List Presave</h6>
+                    <div class="">
+                        <h6 class="text-15 mb-1 text-gray-700 dark:text-gray-100">List Presave</h6>
+                        <div class="flex items-center gap-2">
+                            <h6 class="text-gray-700 dark:text-gray-100">Filter Status: </h6>
+                            <select id="status-filter"
+                                class="rounded py-0 border border-gray-200 dark:bg-[#383d3b] dark:border-[#747675] dark:text-[#ced4da]">
+                                <option value="all">All</option>
+                                <option value="active">Active</option>
+                                <option value="banned">Banned</option>
+                            </select>
+                        </div>
+                    </div>
                     @can('presave.create')
                         <button data-tw-target="#modal-id_form" data-tw-toggle="modal"
                                 class="btn border-violet-500 bg-violet-500 text-white hover:border-violet-600 hover:bg-violet-600 focus:border-violet-600 focus:bg-violet-600 focus:ring focus:ring-violet-500/30 active:border-violet-600 active:bg-violet-600">
@@ -94,9 +105,9 @@
                     @endcan
                 </div>
                 <div class="card-body relative overflow-x-auto">
-                    <x-backend.table :datas="$presaves" :columns="['title', 'link']" name="presaves">
+                    <x-backend.table :datas="$presaves" :columns="['title', 'link', 'views', 'status']" name="presaves">
                         @foreach ($presaves as $cell)
-                            <tr>
+                            <tr class="short-row" data-status="{{ $cell->statuses->status ? 'active' : 'banned' }}">
                                 <x-backend.column-table>
                                     {{ $loop->iteration }}
                                 </x-backend.column-table>
@@ -107,6 +118,48 @@
 
                                 <x-backend.column-table>
                                     {{ $cell->link }}
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    @if ($cell->viewable->count === 0)
+                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                            Not yet used
+                                        </p>
+                                        @else
+                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                            {{ $cell->viewable->count }}
+                                        </p>
+                                    @endif
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    @if ($cell->statuses->status === 1)
+                                        <div class="flex justify-center items-center gap-2">
+                                            <p class="flex px-3 justify-center py-1 font-bold text-green-700 border border-green-100 rounded bg-green-50">
+                                                Active
+                                            </p>
+                                            <form action="{{route('platform.presave.status.update',$cell->id)}}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="bg-red-500 hover:bg-red-600 px-3 text-red-200 py-1 rounded-md">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @else
+                                        <div class="flex justify-center items-center gap-2">
+                                            <p class="flex px-3 justify-center py-1 font-bold text-red-700 border border-red-100 rounded bg-red-50">
+                                                Banned
+                                            </p>
+                                            <form action="{{route('platform.presave.status.update',$cell->id)}}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="bg-green-500 hover:bg-green-600 px-3 text-green-200 py-1 rounded-md">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
@@ -126,4 +179,23 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#status-filter').change(function() {
+                var status = $(this).val();
+                $('.short-row').each(function() {
+                    if (status === 'all') {
+                        $(this).show();
+                    } else {
+                        if ($(this).data('status') === status) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </x-backend.dashboard-layout>

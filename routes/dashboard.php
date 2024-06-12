@@ -34,6 +34,8 @@ Route::middleware(["auth"])->group(function () {
         Route::put('/presave/link/update', [LinkController::class, 'updateLinkPresave'])->name('link.presave.update');
         Route::delete('/presave/link/delete/{id}', [LinkController::class, 'deleteLinkPresave'])->name('link.presave.delete');
         Route::put('/presave/linkstyle/update/{id}', [LinkController::class, 'updateStyleLink'])->name('link.presave.style.update');
+        Route::put('/update/status/{id}', [PresaveController::class, 'changeStatus'])->name('platform.presave.status.update');
+
     });
     include __DIR__ . '/shortlink.php';
 });

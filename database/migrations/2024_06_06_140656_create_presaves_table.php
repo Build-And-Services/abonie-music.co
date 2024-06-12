@@ -12,11 +12,13 @@ return new class extends Migration {
     {
         Schema::create('presaves', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('photo')->nullable();
             $table->string('link');
             $table->enum('style_link', ['BASIC', 'ROUNDED', 'SHADOW'])->default('BASIC');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

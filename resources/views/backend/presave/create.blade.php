@@ -35,14 +35,14 @@
             <h6 class="text-15 mb-1 text-lg font-bold text-gray-700 dark:text-gray-100">Add new presave</h6>
         </div>
         <div class="card-body relative overflow-x-auto">
-            <div class="grid grid-cols-12 gap-6 py-5">
-                <div class="lg:col-span-7 col-span-12">
+            <div class="gap-6 justify-between lg:flex py-5">
+                <div class="mb-8">
                     <form action="{{ route('presave.update', $presave->id) }}" method="POST"
                         enctype="multipart/form-data" class="flex flex-col justify-center gap-3">
                         @csrf
                         @method('PUT')
                         <div class="grid grid-cols-8 justify-items-start">
-                            <div class="relative col-span-12 h-[150px] w-[150px] overflow-hidden rounded-lg border-2 border-dashed border-gray-300 hover:cursor-pointer hover:bg-gray-100 md:col-span-2"
+                            <div class="relative mr-2 col-span-12 h-[150px] w-[150px] overflow-hidden rounded-lg border-2 border-dashed border-gray-300 hover:cursor-pointer hover:bg-gray-100 md:col-span-2"
                                 id="dropzone">
                                 <input type="file"
                                     class="absolute inset-0 z-50 h-full w-full opacity-0 hover:cursor-pointer"
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="lg:col-span-5 col-span-12">
+                <div class="">
                     <div class="mx-auto"
                         style="width: 100%;
                                 max-width: 350px;
