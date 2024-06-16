@@ -33,6 +33,8 @@
     <div class="card dark:border-zinc-600 dark:bg-zinc-800">
         <div class="card-body flex items-center justify-between border-b border-gray-100 dark:border-zinc-600">
             <h6 class="text-15 mb-1 text-lg font-bold text-gray-700 dark:text-gray-100">Add new presave</h6>
+            <a class="text-blue-500 hover:text-blue-700 hover:font-medium hover:underline" target="_blank"
+                href="{{ route('presave', $presave->slug) }}">music.co/{{ $presave->slug }}</a>
         </div>
         <div class="card-body relative overflow-x-auto">
             <div class="gap-6 justify-between lg:flex py-5">
@@ -129,7 +131,7 @@
                                     </span>
                                     <input
                                         class="mb-0.5 h-full w-full rounded-r-lg border border-slate-200 px-3 py-2 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out focus:border-blue-600 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400"
-                                        id="title" placeholder="mylink" value="{{ $presave->link }}"
+                                        id="title" placeholder="mylink" value="{{ $presave->slug }}"
                                         name="link">
                                 </div>
                             </div>
@@ -300,6 +302,10 @@
                 displayPreview(file);
             });
 
+            if (photoDB.src != '') {
+                input.classList.add('hidden')
+            }
+
 
             function displayPreview(file) {
                 let reader = new FileReader();
@@ -311,7 +317,6 @@
                     buttonClose.classList.remove('hidden')
                     startPreview.classList.add('hidden');
                     firstImage.classList.add('hidden')
-                    input.classList.add('hidden')
                 };
             }
 
