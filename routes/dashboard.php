@@ -29,15 +29,19 @@ Route::middleware(["auth"])->group(function () {
         Route::get('/preview/presave/{id}', [PreviewController::class, 'presave'])->name('preview.presave.index');
         Route::get('/preview/{id}', [PreviewController::class, 'index'])->name('preview.biolink.index');
 
-//        Route Add Link Presave
+        //Route Add Link Presave
+
         Route::post('/presave/link/create', [LinkController::class, 'addLinkPresave'])->name('link.presave.create');
         Route::put('/presave/link/update', [LinkController::class, 'updateLinkPresave'])->name('link.presave.update');
         Route::delete('/presave/link/delete/{id}', [LinkController::class, 'deleteLinkPresave'])->name('link.presave.delete');
         Route::put('/presave/linkstyle/update/{id}', [LinkController::class, 'updateStyleLink'])->name('link.presave.style.update');
         Route::put('/update/status/{id}', [PresaveController::class, 'changeStatus'])->name('platform.presave.status.update');
-
     });
     include __DIR__ . '/shortlink.php';
 });
+
+// Presave
+Route::get('/{slug}', [PreviewController::class, 'resultPresave'])->name('presave');
+
 Route::post("/logout", [AuthenticateController::class, 'logout'])->name("logout");
 // Route::get('/music.co/{short_name}', [ShortLinkController::class, 'redirect']);

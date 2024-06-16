@@ -11,6 +11,8 @@ class LinkPresave extends Model
 
     protected $guarded = ['id'];
 
+
+
     public function platform()
     {
         return $this->belongsTo(Platform::class);

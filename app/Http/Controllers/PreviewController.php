@@ -23,6 +23,12 @@ class PreviewController extends Controller
         return view('frontend.preview.presave', compact('presave'));
     }
 
+    public function resultPresave($slug)
+    {
+        $presave = Presave::with('links')->where('slug', $slug)->first();
+        return view('frontend.preview.presave', compact('presave'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

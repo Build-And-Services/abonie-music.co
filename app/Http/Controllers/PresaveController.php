@@ -82,7 +82,7 @@ class PresaveController extends Controller
         try {
             DB::beginTransaction();
             $platforms = DB::table('platforms')->select('id', 'name', 'thumbnail')->where('type', 'PRESAVE')->get();
-            $presave = Presave::with('links')->select('id', 'title', 'photo', 'link', 'style_link')->where('id', $id)->first();
+            $presave = Presave::with('links')->select('id', 'title', 'photo', 'link', 'slug', 'style_link')->where('id', $id)->first();
             DB::commit();
             return view('backend.presave.create', compact('platforms', 'presave'));
         } catch (\Throwable $th) {
@@ -127,7 +127,6 @@ class PresaveController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
-
     }
 
     /**
@@ -155,7 +154,7 @@ class PresaveController extends Controller
             // dd($presave->statuses->status);
             if ($presave->statuses->status == 1) {
                 $presave->statuses()->update(['status' => 0]);
-            } else{
+            } else {
                 $presave->statuses()->update(['status' => 1]);
             }
             return redirect()->back()->with('success', 'Status presave berhasil diubah');
