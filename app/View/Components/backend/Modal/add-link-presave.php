@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class add-link-presave extends Component
+class AddLinkPresave extends Component
 {
     /**
      * Create a new component instance.
