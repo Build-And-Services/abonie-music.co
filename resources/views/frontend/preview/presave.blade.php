@@ -38,10 +38,11 @@
                                 class="group col-span-12 flex h-[3.6rem] cursor-pointer items-center justify-between border border-gray-100 bg-white px-4 transition-all duration-300">
                                 <img src="{{ $link->platform->thumbnail }}" alt="" class="w-32">
                                 @if ($link->link != null)
-                                    <a href='{{ $link->link }}'
+                                    <a href='{{ strpos($link->link, 'http') === 0 ? $link->link : 'https://' . $link->link }}'
                                         class="whitespace-no-wrap min-w-[82px] inline-flex items-center justify-center rounded-full border
                         border-gray-400 bg-white px-4 py-1 text-base font-medium leading-6 text-black shadow-sm
-                        hover:bg-stone-600 hover:text-white focus:shadow-none focus:outline-none">
+                        hover:bg-stone-600 hover:text-white focus:shadow-none focus:outline-none"
+                                        target="_blank">
                                         {{ $link->button_text }}
                                     </a>
                                 @endif
@@ -55,10 +56,11 @@
                                 class="group col-span-12 flex h-[3.8rem] cursor-pointer items-center justify-between rounded-full border bg-white px-4 shadow-lg transition-all duration-300 hover:scale-105">
                                 <img src="{{ $link->platform->thumbnail }}" alt="" class="w-32">
                                 @if ($link->link != null)
-                                    <a href='{{ $link->link }}'
+                                    <a href='{{ strpos($link->link, 'http') === 0 ? $link->link : 'https://' . $link->link }}'
                                         class="whitespace-no-wrap min-w-[82px] inline-flex items-center justify-center rounded-full border
                         border-gray-400 bg-white px-4 py-1 text-base font-medium leading-6 text-black shadow-sm
-                        hover:bg-stone-600 hover:text-white focus:shadow-none focus:outline-none">
+                        hover:bg-stone-600 hover:text-white focus:shadow-none focus:outline-none"
+                                        target="_blank">
                                         {{ $link->button_text }}
                                     </a>
                                 @endif
@@ -73,10 +75,11 @@
 
                                 <img src="{{ $link->platform->thumbnail }}" alt="" class="w-32">
                                 @if ($link->link != null)
-                                    <a href='{{ $link->link }}'
+                                    <a href='{{ strpos($link->link, 'http') === 0 ? $link->link : 'https://' . $link->link }}'
                                         class="whitespace-no-wrap min-w-[82px] inline-flex items-center justify-center rounded-full border
                         border-gray-400 bg-white px-4 py-1 text-base font-medium leading-6 text-black shadow-sm
-                        hover:bg-stone-600 hover:text-white focus:shadow-none focus:outline-none">
+                        hover:bg-stone-600 hover:text-white focus:shadow-none focus:outline-none"
+                                        target="_blank">
                                         {{ $link->button_text }}
                                     </a>
                                 @endif
