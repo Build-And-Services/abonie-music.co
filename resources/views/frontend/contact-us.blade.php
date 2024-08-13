@@ -4,7 +4,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6">
                     <div class="image rmb-55" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
-                        <img src="assets/logo-abonie.png" id="img-floating" style="width:300px;" alt="CTA">
+                        <img src="assets/logo-abonie-new.png" id="img-floating" style="width:400px;" alt="CTA">
                     </div>
                 </div>
                 <div class="col-xl-5 col-lg-6">
