@@ -82,7 +82,7 @@
                                                         <div
                                                             class="flex items-center rounded border bg-gray-50 dark:border-zinc-600 dark:bg-zinc-600">
                                                             <div class="input-group-text px-4 dark:text-zinc-100">
-                                                                https://music.co/
+                                                                https://abni.link/
                                                             </div>
                                                             <input type="text"
                                                                    class="w-full border-0 border-l border-gray-100 placeholder:text-sm focus:border-violet-100 focus:ring focus:ring-violet-500/20 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-100 dark:placeholder:text-zinc-100"

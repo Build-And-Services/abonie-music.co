@@ -34,7 +34,7 @@
         <div class="card-body flex items-center justify-between border-b border-gray-100 dark:border-zinc-600">
             <h6 class="text-15 mb-1 text-lg font-bold text-gray-700 dark:text-gray-100">Add new presave</h6>
             <a class="text-blue-500 hover:text-blue-700 hover:font-medium hover:underline" target="_blank"
-                href="{{ route('presave', $presave->slug) }}">music.co/{{ $presave->slug }}</a>
+                href="{{ route('presave', $presave->slug) }}">abni.link/{{ $presave->slug }}</a>
         </div>
         <div class="card-body relative overflow-x-auto">
             <div class="gap-6 justify-between lg:flex py-5">
@@ -127,7 +127,7 @@
                                 <div class="flex w-full">
                                     <span
                                         class="rounded-e-0 inline-flex items-center rounded-s-md border border-e-0 border-gray-300 bg-gray-100 px-3 text-sm font-medium text-black dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400">
-                                        music.co/
+                                        abni.link/
                                     </span>
                                     <input
                                         class="mb-0.5 h-full w-full rounded-r-lg border border-slate-200 px-3 py-2 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out focus:border-blue-600 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400"

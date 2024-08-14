@@ -15,7 +15,7 @@
                     <nav class="main-menu navbar-expand-lg">
                         <div class="navbar-header py-10">
                            <div class="mobile-logo">
-                               <a href="{{url('/music.co')}}">
+                               <a href="{{url('/abni.link')}}">
                                     <img src="{{ asset('assets/logo-abonie-new.png')}}" style="width: 50px" alt="Logo" title="Logo">
                                </a>
                            </div>
