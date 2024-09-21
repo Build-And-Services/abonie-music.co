@@ -8,6 +8,7 @@ use App\Models\Status;
 use App\Models\Biolink;
 use App\Models\StyleLink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BiolinkController extends Controller
 {
@@ -16,6 +17,11 @@ class BiolinkController extends Controller
      */
     public function index()
     {
+        // if (Auth::user()->email == "superadmin@mail.com") {
+        //     $biolinks = Biolink::with('users')->get();
+        // } else {
+        //     $biolinks = Biolink::with('users')->where('user_id', Auth::user()->id)->get();
+        // }
         $biolinks = Biolink::all();
         return view("backend.biolink.index", compact("biolinks"));
     }
@@ -42,15 +48,15 @@ class BiolinkController extends Controller
 
         try {
             // $biolinks = Biolink::create($request->all());
-            if($request->hasFile('profile')) {
-                $filename = time().'.'.$request->file('profile')->getClientOriginalExtension();
+            if ($request->hasFile('profile')) {
+                $filename = time() . '.' . $request->file('profile')->getClientOriginalExtension();
                 $filepath = public_path('assets-dashboard/images/users');
                 $request->file('profile')->move($filepath, $filename);
                 $biolinks = Biolink::create([
                     'name' => $request->name,
                     'link' => $request->link,
                     'description' => $request->description,
-                    'photo' => '/assets-dashboard/images/users/'.$filename,
+                    'photo' => '/assets-dashboard/images/users/' . $filename,
                 ]);
 
                 $status = new Status(['status' => true]);
@@ -62,8 +68,8 @@ class BiolinkController extends Controller
                     'biolink_id' => $biolinks->id,
                 ]);
 
-                return redirect()->route('biolink.edit', $biolinks->id)->with('success','Berhasil ditambah');
-            }else{
+                return redirect()->route('biolink.edit', $biolinks->id)->with('success', 'Berhasil ditambah');
+            } else {
                 return back()->with('error', 'Profile is required');
             }
         } catch (\Throwable $th) {
@@ -106,21 +112,21 @@ class BiolinkController extends Controller
             // return $request->all();
             $biolinks = Biolink::findOrFail($id);
 
-            if($request->name){
+            if ($request->name) {
                 $biolinks->name = $request->name;
             }
             // if($request->description){
-                $biolinks->description = $request->description;
+            $biolinks->description = $request->description;
             // }
-            if($request->link){
+            if ($request->link) {
                 $biolinks->link = $request->link;
             }
-            if($request->hasFile('profile')){
+            if ($request->hasFile('profile')) {
 
-                $filename = time().'.'.$request->file('profile')->getClientOriginalExtension();
+                $filename = time() . '.' . $request->file('profile')->getClientOriginalExtension();
                 $filepath = public_path('assets-dashboard/images/users');
                 $request->file('profile')->move($filepath, $filename);
-                $biolinks->photo = '/assets-dashboard/images/users/'.$filename;
+                $biolinks->photo = '/assets-dashboard/images/users/' . $filename;
             }
             $biolinks->save();
 
@@ -133,7 +139,8 @@ class BiolinkController extends Controller
         }
     }
 
-    public function addLink(Request $request, string $id){
+    public function addLink(Request $request, string $id)
+    {
         $request->validate([
             'name' => 'required',
             'link' => 'required'

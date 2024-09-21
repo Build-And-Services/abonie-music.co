@@ -20,7 +20,12 @@ class PresaveController extends Controller
      */
     public function index()
     {
-        $presaves = Presave::all();
+        if (Auth::user()->email == "superadmin@mail.com") {
+            $presaves = Presave::with('users')->get();
+        } else {
+            $presaves = Presave::with('users')->where('user_id', Auth::user()->id)->get();
+        }
+
         return view('backend.presave.index', compact("presaves"));
     }
 

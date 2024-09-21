@@ -26,6 +26,7 @@ class PreviewController extends Controller
     public function resultPresave($slug)
     {
         $presave = Presave::with('links')->where('slug', $slug)->first();
+        $presave->viewable()->update(['count' => $presave->viewable->count + 1]);
         return view('frontend.preview.presave', compact('presave'));
     }
 

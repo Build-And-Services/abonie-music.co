@@ -105,11 +105,16 @@
                     @endcan
                 </div>
                 <div class="card-body relative overflow-x-auto">
-                    <x-backend.table :datas="$presaves" :columns="['title', 'link', 'views', 'status']" name="presaves">
+                    <x-backend.table :datas="$presaves" :columns="['user','title', 'link', 'views', 'status']" name="presaves">
                         @foreach ($presaves as $cell)
                             <tr class="short-row" data-status="{{ $cell->statuses->status ? 'active' : 'banned' }}">
+
                                 <x-backend.column-table>
                                     {{ $loop->iteration }}
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    {{ $cell->users->name }}
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
@@ -117,19 +122,20 @@
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
-                                    {{ $cell->link }}
+                                    {{-- <button onclick="countPresave('{{ $cell->slug }}', {{$cell->id}})">
+                                        <a class="text-blue-500 hover:text-blue-700 hover:font-medium hover:underline" target="_blank" href="{{ route('presaveClick', [ $cell->id,$cell->slug]) }}">abni.link/{{ $cell->slug }}</a>
+                                    </button> --}}
+                                    <a class="text-blue-500 hover:text-blue-700 hover:font-medium hover:underline" target="_blank" href="{{ route('presave', $cell->slug) }}">abni.link/{{ $cell->slug }}</a>
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
-                                    @if ($cell->viewable->count === 0)
-                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                    <p id="count{{$cell->id}}" class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
+                                        @if ($cell->viewable->count == 0)
                                             Not yet used
-                                        </p>
                                         @else
-                                        <p class="flex px-3 justify-center py-1 font-bold text-sky-700 border border-sky-100 rounded bg-sky-50">
                                             {{ $cell->viewable->count }}
-                                        </p>
-                                    @endif
+                                        @endif
+                                    </p>
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
@@ -197,5 +203,24 @@
                 });
             });
         });
+        // function countPresave(slug, id) {
+        //     // $('#count' + id).text("1000");
+        //     $.ajax({
+        //         type: 'POST',
+        //         url: '{{ route("api.view.count", ":short_name") }}'.replace(':short_name', slug),
+        //         data: { slug: slug },
+        //         dataType: 'json',
+        //         success: function (response) {
+        //             console.log(response);
+        //             let countElement = $('#count' + id);
+        //             // let newCount = response.data.count;
+        //             countElement.text( response.data.count);
+        //         },
+        //         error: function (xhr, status, error) {
+        //             console.error("AJAX Error: " + status + " " + error);
+        //         }
+        //     });
+        // }
+
     </script>
 </x-backend.dashboard-layout>
