@@ -35,10 +35,11 @@ class ApiCountViewController extends BaseController
                 $biolink = Biolink::find($id);
                 $biolink->viewable()->update(['count' => $biolink->viewable->count + 1]);
                 $updateData = $biolink;
+            } else {
+                $presave = Presave::find($id);
+                $presave->viewable()->update(['count' => $presave->viewable->count + 1]);
+                $updateData = $presave;
             }
-            $presave = Presave::find($id);
-            $presave->viewable()->update(['count' => $presave->viewable->count + 1]);
-            $updateData = $presave;
             DB::commit();
             return $this->sendResponse(new CountViewResource($updateData), 'Successfully update count', 200);
         } catch (\Throwable $th) {
