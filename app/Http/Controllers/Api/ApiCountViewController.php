@@ -22,21 +22,21 @@ class ApiCountViewController extends BaseController
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $short_name)
     {
         try {
             DB::beginTransaction();
             $updateData = null;
             if ($request->type == 'shortlink') {
-                $shortlink = ShortLink::find($id);
+                $shortlink = ShortLink::where('short_name', $short_name)->firstOrFail();
                 $shortlink->viewable()->update(['count' => $shortlink->viewable->count + 1]);
                 $updateData = $shortlink;
             } elseif ($request->type == 'biolink') {
-                $biolink = Biolink::find($id);
+                $biolink = Biolink::where('name', $short_name)->firstOrFail();
                 $biolink->viewable()->update(['count' => $biolink->viewable->count + 1]);
                 $updateData = $biolink;
             } else {
-                $presave = Presave::find($id);
+                $presave = Presave::where('slug', $short_name)->firstOrFail();
                 $presave->viewable()->update(['count' => $presave->viewable->count + 1]);
                 $updateData = $presave;
             }

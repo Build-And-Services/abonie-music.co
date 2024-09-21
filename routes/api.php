@@ -15,5 +15,5 @@ Route::prefix('/v1')->group(function () {
     Route::get('/short/{short_name}', [ApiShortLinkController::class, 'show'])->name('api.short.show');
     Route::post('/short/create', [ApiShortLinkController::class, 'store'])->name('api.short.store');
     Route::get('/views', [ApiCountViewController::class, 'index'])->name('api.view.index');
-    Route::post('/views/count/{id}', [ApiCountViewController::class, 'update'])->name('api.view.count');
+    Route::post('/views/count/{short_name}', [ApiCountViewController::class, 'update'])->name('api.view.count');
 });
