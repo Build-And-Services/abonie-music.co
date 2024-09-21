@@ -42,6 +42,7 @@ Route::middleware(["auth"])->group(function () {
 
 // Presave
 Route::get('/{slug}', [PreviewController::class, 'resultPresave'])->name('presave');
+// Route::get('/{id}/{slug}', [PreviewController::class, 'presaveClick'])->name('presaveClick');
 
 Route::post("/logout", [AuthenticateController::class, 'logout'])->name("logout");
 // Route::get('/music.co/{short_name}', [ShortLinkController::class, 'redirect']);
