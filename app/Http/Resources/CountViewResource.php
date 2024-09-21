@@ -33,6 +33,14 @@ class CountViewResource extends JsonResource
                 'name' => $this->name,
                 'count' => $viewable->count + 1
             ];
+        } elseif ($viewableType === 'App\\Models\\Presave') {
+            return [
+                'id' => $this->id,
+                'viewable_type' => 'presave',
+                'presave_id' => $this->id,
+                'name' => $this->users->name,
+                'count' => $viewable->count + 1
+            ];
         }
 
         return [

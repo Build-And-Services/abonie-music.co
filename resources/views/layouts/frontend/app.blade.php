@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Music.co - Aboni Digital Music</title>
-    <link rel="shortcut icon" href="assets/logo-abonie.png" type="image/x-icon">
+    <title>abni.link - Abonie Digital Music</title>
+    <link rel="shortcut icon" href="assets/logo-abonie-new.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/flaticon.min.css">

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Biolink;
-use App\Models\ShortLink;
 use App\Models\View;
+use App\Models\Biolink;
+use App\Models\Presave;
+use App\Models\ShortLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\CountViewResource;
@@ -35,8 +36,9 @@ class ApiCountViewController extends BaseController
                 $biolink->viewable()->update(['count' => $biolink->viewable->count + 1]);
                 $updateData = $biolink;
             }
-            // $presave = Presave::find($id);
-            // $presave->viewable()->update(['count' => $presave->viewable->count + 1]);
+            $presave = Presave::find($id);
+            $presave->viewable()->update(['count' => $presave->viewable->count + 1]);
+            $updateData = $presave;
             DB::commit();
             return $this->sendResponse(new CountViewResource($updateData), 'Successfully update count', 200);
         } catch (\Throwable $th) {
