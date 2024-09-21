@@ -63,11 +63,15 @@
                     </div>
                 </div>
                 <div class="relative overflow-x-auto card-body">
-                    <x-backend.table :datas="$shorts" :columns="['original link', 'short name', 'result link', 'views' , 'status']"  name="short">
+                    <x-backend.table :datas="$shorts" :columns="['user', 'original link', 'short name', 'result link', 'views' , 'status']"  name="short">
                         @foreach ($shorts as $cell)
                             <tr class="short-row" data-status="{{ $cell->statuses->status ? 'active' : 'banned' }}">
                                 <x-backend.column-table>
                                     {{ $loop->iteration }}
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    {{ $cell->users->name }}
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
@@ -79,7 +83,7 @@
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
-                                    {{ $cell->result_link }}
+                                    <a class="text-blue-500 hover:text-blue-700 hover:font-medium hover:underline" target="_blank" href="{{ $cell->result_link }}">{{ $cell->result_link }}</a>
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>

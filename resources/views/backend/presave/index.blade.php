@@ -105,11 +105,16 @@
                     @endcan
                 </div>
                 <div class="card-body relative overflow-x-auto">
-                    <x-backend.table :datas="$presaves" :columns="['title', 'link', 'views', 'status']" name="presaves">
+                    <x-backend.table :datas="$presaves" :columns="['user','title', 'link', 'views', 'status']" name="presaves">
                         @foreach ($presaves as $cell)
                             <tr class="short-row" data-status="{{ $cell->statuses->status ? 'active' : 'banned' }}">
+
                                 <x-backend.column-table>
                                     {{ $loop->iteration }}
+                                </x-backend.column-table>
+
+                                <x-backend.column-table>
+                                    {{ $cell->users->name }}
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>

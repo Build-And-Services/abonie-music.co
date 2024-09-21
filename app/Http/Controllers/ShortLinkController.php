@@ -15,7 +15,11 @@ class ShortLinkController extends Controller
     public function index()
     {
         try {
-            $shortlinks = ShortLink::all();
+            if (Auth::user()->email == "superadmin@mail.com") {
+                $shortlinks = ShortLink::with('users')->get();
+            } else {
+                $shortlinks = ShortLink::with('users')->where('id_user', Auth::user()->id)->get();
+            }
             return view('backend.shortlinks.index', [
                 'shorts' => $shortlinks
             ]);
@@ -116,7 +120,7 @@ class ShortLinkController extends Controller
                     $data['original_link'] = $request->original_link;
                     $data['short_name'] = $request->short_name;
                     $data['result_link'] = $result_link;
-                }else {
+                } else {
                     $short_name = $this->generateUniqueShortCode();
                     $baseUrl = config('app.url');
                     $result_link = 'http://shrtlink.co.id/' . $short_name;
