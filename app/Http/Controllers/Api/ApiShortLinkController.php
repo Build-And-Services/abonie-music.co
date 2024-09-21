@@ -59,7 +59,10 @@ class ApiShortLinkController extends BaseController
                     'short_name' => $short_name,
                     'result_link' => $result_link,
                 ]);
+                $count = new View(['count' => 0]);
                 $status = new Status(['status' => true]);
+
+                $shortlink->viewable()->save($count);
                 $shortlink->statuses()->save($status);
             }
 
