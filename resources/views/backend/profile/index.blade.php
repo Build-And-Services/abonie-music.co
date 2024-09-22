@@ -31,7 +31,11 @@
                     <div class="col-span-9">
                         <div class="flex flex-wrap items-center">
                             <div class="w-20 h-20 ltr:mr-1 rtl:ml-1">
-                                <img src="{{asset('assets/logo-abonie-new.png')}}" alt="" class="rounded-full">
+                                @if (!empty($getUser->img))
+                                    <img src="data:image/png;base64,{{ $getUser->img }}" alt="User Image" class="h-20 p-1 mx-auto rounded-full border border-gray-100 dark:border-zinc-600 dark:border-zinc-600">
+                                @else
+                                    <img src="{{ asset('assets/logo-abonie-new.png') }}" alt="Default Image" class="h-20 p-1 mx-auto rounded-full border border-gray-100 dark:border-zinc-600 dark:border-zinc-600">
+                                @endif
                             </div>
                             <div class="md:ml-3 mt-3 md:mt-0">
                                 <h5 class="text-gray-700 text-16 font-bold dark:text-gray-100">{{$getUser->name}}</h5>
@@ -60,8 +64,8 @@
                     <div class="pb-3">
                         <div class="grid grid-cols-12">
                             <div class="col-span-12 md:col-span-12">
-                                <form action="{{route('profile.update', $getUser->id)}}" method="POST">
-                                @method('PUT')
+                                <form action="{{route('profile.update', $getUser->id)}}" method="POST" enctype="multipart/form-data">
+                                @method('POST')
                                 @csrf
                                     <div class="mb-4">
                                         <label for="original_link" class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Username</label>
@@ -72,8 +76,13 @@
                                         <input class="w-full placeholder:text-13 py-1.5 text-13 rounded border-gray-100 focus:border focus:border-violet-500 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 dark:text-zinc-100" type="text" placeholder="WebBuildAndService" id="email" value="{{$getUser->email}}" name="email">
                                     </div>
                                     <div class="mb-4">
+                                        <label for="img" class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Image</label>
+                                        <img id="preview-image" src="#" alt="Preview Image" class="mb-3 w-32 h-32 object-cover rounded-full" style="display: none;">
+                                        <input class="w-full placeholder:text-13 py-1.5 text-13 rounded border-gray-100 focus:border focus:border-violet-500 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 dark:text-zinc-100" type="file" id="img" name="img">
+                                    </div>
+                                    <div class="mb-4">
                                         <label for="short_name" class="block mb-2 font-medium text-gray-700 dark:text-gray-100">Password</label>
-                                        <input class="w-full placeholder:text-13 py-1.5 text-13 rounded border-gray-100 focus:border focus:border-violet-500 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 dark:text-zinc-100" type="password" placeholder="" id="password" type="password" value="{{$getUser->password}}" readonly name="password">
+                                        <input class="w-full placeholder:text-13 py-1.5 text-13 rounded border-gray-100 focus:border focus:border-violet-500 focus:ring focus:ring-violet-500/20 dark:bg-zinc-700/50 dark:border-zinc-600 dark:placeholder:text-zinc-100 dark:text-zinc-100" type="password" placeholder="Add new password" id="password" type="password" name="password">
                                     </div>
                                     <div class="mt-6">
                                         <button type="submit" class="text-white bg-violet-600 border-transparent btn">Save</button>
@@ -92,7 +101,7 @@
     <script>
         $(document).ready(function() {
             $('#status-filter').change(function() {
-                var status = $(this).val();
+                let status = $(this).val();
                 $('.user-row').each(function() {
                     if (status === 'all') {
                         $(this).show();
@@ -105,10 +114,21 @@
                     }
                 });
             });
+            $('#img').on('change', function () {
+                let input = this;
+                if (input.files && input.files[0]) {
+                    let reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#preview-image').attr('src', e.target.result).show();
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            })
         });
         document.getElementById('btn-edit-profile').addEventListener('click', function() {
         console.log('click')
-        var formEdit = document.querySelector('.form-edit-profile');
+        let formEdit = document.querySelector('.form-edit-profile');
 
         if (formEdit.style.display === 'none') {
             formEdit.style.display = 'block';

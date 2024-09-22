@@ -90,7 +90,7 @@ class RolePermissionSeeder extends Seeder
             ]
         ];
         $admin = User::where('email', 'superadmin@mail.com')->first();
-        $user = User::where('email', 'user@mail.com')->first();
+        $user = User::where('email', 'user1@mail.com')->first();
         $roleSuperAdmin = $this->maybeCreateSuperAdminRole($admin);
         $roleUser = $this->maybeCreateUserRole($user);
 
@@ -107,10 +107,10 @@ class RolePermissionSeeder extends Seeder
                         ]
                     );
 
-                    if($permissionGroup != 'admin' && $permissionGroup != 'role'){
+                    if ($permissionGroup != 'admin' && $permissionGroup != 'role') {
                         $roleUser->givePermissionTo($permission);
                     }
-                    
+
                     $roleSuperAdmin->givePermissionTo($permission);
                     $admin->assignRole($roleSuperAdmin);
                     $user->assignRole($roleUser);
