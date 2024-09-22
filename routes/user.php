@@ -10,5 +10,5 @@ Route::prefix('users')->group(function () {
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::patch('/status/{id}', [UserController::class, 'status'])->name('users.status');
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');
-    Route::put('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/{id}', [ProfileController::class, 'update'])->name('profile.update');
 });

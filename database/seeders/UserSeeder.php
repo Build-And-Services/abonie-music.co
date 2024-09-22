@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $user = User::where('email', 'superadmin@mail.com')->first();
         if (is_null($user)) {
             $user = new User();
-            $user->name = "superadmin";
+            $user->name = "Superadmin";
             $user->email = "superadmin@mail.com";
             $user->password = Hash::make('password123');
             $user->save();
@@ -27,8 +27,8 @@ class UserSeeder extends Seeder
         }
 
         $user = new User();
-        $user->name = 'User';
-        $user->email = 'user@mail.com';
+        $user->name = 'User1';
+        $user->email = 'user1@mail.com';
         $user->password = Hash::make('password123');
         $user->save();
         $status = new Status(['status' => true]);
