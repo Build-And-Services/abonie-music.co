@@ -11,7 +11,7 @@
 
     <body class="relative min-h-screen backdrop-blur-md"
         @if ($presave->photo != null) style="background-image: url({{ $presave->photo }});    background-repeat: no-repeat;
-    background-size: cover;" @endif>
+    background-size: cover; background-position: center" @endif>
         <div class="mx-auto mb-12 flex flex-col px-3 py-6 md:max-w-sm">
             <div class="relative mx-auto flex flex-col gap-1">
                 <div class="profile-image mx-auto">

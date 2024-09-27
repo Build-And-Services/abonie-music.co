@@ -61,6 +61,8 @@
                                         </h3>
                                         <p class="mt-1 text-xs text-gray-500">
                                             PNG, JPG up to 5MB
+                                            <br>
+                                            Ukuran Terbaik 600 X 600
                                         </p>
                                     </div>
                                 @else
@@ -85,13 +87,15 @@
                                     <img class="mx-auto h-12 w-12"
                                         src="https://www.svgrepo.com/show/357902/image-upload.svg" alt="">
 
-                                    <h3 class="mt-2 text-sm font-medium text-gray-900">
+                                    <h3 class="mt-2 text-xs font-medium text-gray-900">
                                         <label for="file-upload" class="relative cursor-pointer">
                                             <span>Upload Image</span>
                                         </label>
                                     </h3>
                                     <p class="mt-1 text-xs text-gray-500">
-                                        PNG, JPG up to 5MB
+                                        PNG, JPG max 5MB
+                                        <br>
+                                        Ukuran Terbaik 600 X 600
                                     </p>
                                 </div>
                                 <img src="" class="z-50 hidden w-full" id="preview">
@@ -138,7 +142,7 @@
 
                         </div>
                         <button type="submit"
-                            class="mb-6 inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-gray-500 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600 disabled:pointer-events-none disabled:opacity-50">
+                            class="mb-6 inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-[#5b5ee1] px-4 py-2 text-sm font-semibold text-white hover:bg-[#4a4cca] disabled:pointer-events-none disabled:opacity-50">
                             Save Change
                         </button>
                     </form>
@@ -146,7 +150,7 @@
                     <div class="platform-links">
                         <h2 class="mb-4 mt-8 text-lg font-bold">Platform Links:</h2>
                         <button type="button" data-tw-target="#modal-add_link" data-tw-toggle="modal"
-                            class="mb-6 inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-gray-500 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-600 disabled:pointer-events-none disabled:opacity-50">
+                            class="mb-6 inline-flex w-full items-center justify-center gap-x-2 rounded-lg border border-transparent bg-[#5b5ee1] px-4 py-2 text-sm font-semibold text-white hover:bg-[#4a4cca] disabled:pointer-events-none disabled:opacity-50">
                             Add Platform
                         </button>
                         <div id='link-presave'>
@@ -200,7 +204,12 @@
                                             </g>
                                         </svg>
                                     </button>
-                                    <button class="hidden" type="submit"></button>
+                                    <div class="col-span-12 inline-flex justify-end">
+
+                                        <button
+                                            class="max-w-24 w-full rounded-lg border border-transparent bg-[#5b5ee1] px-4 py-2 text-sm font-semibold text-white hover:bg-[#4a4cca] disabled:pointer-events-none disabled:opacity-50"
+                                            type="submit">Simpan</button>
+                                    </div>
                                 </form>
                             @endforeach
                         </div>
@@ -474,7 +483,12 @@
                                                     </g>
                                                 </svg>
                                             </button>
-                                    <button class="hidden" type="submit"></button>
+                                    <div class="col-span-12 inline-flex justify-end">
+
+                                        <button
+                                            class="max-w-24 w-full rounded-lg border border-transparent bg-[#5b5ee1] px-4 py-2 text-sm font-semibold text-white hover:bg-[#4a4cca] disabled:pointer-events-none disabled:opacity-50"
+                                            type="submit">Simpan</button>
+                                    </div>
                                 </form>`
                         $('#link-presave').append(element)
                     },
