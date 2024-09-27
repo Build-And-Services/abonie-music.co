@@ -77,8 +77,18 @@ class ApiShortLinkController extends BaseController
     public function show($short_name)
     {
         try {
-            $shortlink = ShortLink::where('short_name', $short_name)->firstOrFail();
-            return $this->sendResponse(new ShortLinkResource($shortlink), 'Successfully get data', 200);
+            $short = ShortLink::with('statuses')->where('short_name', $short_name)->firstOrFail();
+            // dd($short->statuses->status);
+            if ($short->statuses->status == 1) {
+                $short = ShortLink::where('short_name', $short_name)->firstOrFail();
+                return $this->sendResponse(new ShortLinkResource($short), 'Successfully get data', 200);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => "Opps, Shortlink is currently disabled",
+                ]);
+            }
+
         } catch (\Throwable $th) {
             return $this->sendError($th->getMessage(), 400);
         }

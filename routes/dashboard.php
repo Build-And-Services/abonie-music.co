@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthenticateController;
 use App\Http\Controllers\BiolinkController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PresaveController;
 use App\Http\Controllers\PreviewController;
@@ -19,9 +20,7 @@ Route::controller(AuthenticateController::class)->group(function () {
 
 Route::middleware(["auth"])->group(function () {
     Route::prefix('/dashboard')->group(function () {
-        Route::get('/', function () {
-            return view('backend.index');
-        })->name('dashboard');
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
         Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
         Route::post('/biolink/link/{id}', [BiolinkController::class, 'addLink'])->name('biolink.store.link');
