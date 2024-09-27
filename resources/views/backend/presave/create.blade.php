@@ -34,7 +34,7 @@
         <div class="card-body flex items-center justify-between border-b border-gray-100 dark:border-zinc-600">
             <h6 class="text-15 mb-1 text-lg font-bold text-gray-700 dark:text-gray-100">Add new presave</h6>
             <a class="text-blue-500 hover:text-blue-700 hover:font-medium hover:underline" target="_blank"
-                href="{{ route('presave', $presave->slug) }}">abni.link/{{ $presave->slug }}</a>
+                href="{{ route('preview.presave.index', $presave->id) }}">abni.link/{{ $presave->slug }}</a>
         </div>
         <div class="card-body relative overflow-x-auto">
             <div class="gap-6 justify-between lg:flex py-5">
