@@ -100,13 +100,27 @@
 
                                 <x-backend.column-table>
                                     @if ($cell->statuses->status === 1)
-                                        <p class="flex px-3 justify-center py-1 font-bold text-green-700 border border-green-100 rounded bg-green-50">
-                                            Active
-                                        </p>
-                                    @else
-                                        <p class="flex px-3 justify-center py-1 font-bold text-red-700 border border-red-100 rounded bg-red-50">
-                                            Banned
-                                        </p>
+                                        <div class="flex justify-center items-center gap-2">
+                                            <p class="px-3 justify-center py-1 font-bold text-green-700 border border-green-100 rounded bg-green-50">
+                                                Active
+                                            </p>
+                                            <button type="button" onclick="changeStats('{{$cell->id}}')" data-tw-toggle="modal" data-tw-target="#modal-stats"  data-id="{{ $cell->id }}" class="bg-red-500 hover:bg-red-600 px-3 text-red-200 py-1 rounded-md">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                        </div>
+                                        @else
+                                        <div class="flex justify-center items-center gap-2">
+                                            <p class="flex px-3 justify-center py-1 font-bold text-red-700 border border-red-100 rounded bg-red-50">
+                                                Banned
+                                            </p>
+                                            <form action="{{route('updateStatus.shortlink',$cell->id)}}" method="POST">
+                                                @csrf
+                                                @method('POST')
+                                                <button type="submit" class="bg-red-500 hover:bg-red-600 px-3 text-red-200 py-1 rounded-md">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                            </form>
+                                        </div>
                                     @endif
                                 </x-backend.column-table>
 
@@ -148,6 +162,37 @@
                 </div>
             </div>
         </div>
+        <div class="relative z-50 hidden modal" id="modal-stats" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <div class="fixed inset-0 z-50 overflow-hidden">
+                <div class="absolute inset-0 transition-opacity bg-black bg-opacity-50 modal-overlay"></div>
+                <div class="p-4 mx-auto animate-translate sm:max-w-lg">
+                    <div class="relative overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl dark:bg-zinc-600">
+                        <div class="px-4 pt-5 pb-4 bg-white sm:p-6 sm:pb-4 dark:bg-zinc-700">
+                            <div class="sm:flex sm:items-start">
+                                <div class="flex items-center justify-center w-12 h-12 mx-auto rounded-full bg-red-50 sm:mx-0 sm:h-10 sm:w-10 flex-shrink-0">
+                                    <i class="text-red-500 mdi mdi-alert-outline text-22"></i>
+                                </div>
+                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100" id="modal-title">Deactivate shortlink</h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm text-gray-500 dark:text-zinc-100/60">Are you sure you want to deactivate this shortlink?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-4 py-3 mb-2 sm:flex sm:flex-row-reverse sm:px-6">
+                            <form action="" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-red-500 border border-transparent rounded-md shadow-sm hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">Banned</button>
+                            </form>
+                            <button type="button" class="inline-flex justify-center w-full px-4 py-2 mt-3 me-2 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm dark:text-gray-100 hover:bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-gray-500/30 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm dark:bg-zinc-700 dark:border-zinc-600 dark:hover:bg-zinc-600" data-tw-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -175,5 +220,9 @@
                 });
             });
         });
+        function changeStats(id) {
+            const chgStats = document.querySelector('#modal-stats form');
+            chgStats.action = '{{ route("updateStatus.shortlink", ":id") }}'.replace(':id', id);
+        }
     </script>
 </x-backend.dashboard-layout>

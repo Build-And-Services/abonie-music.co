@@ -182,4 +182,20 @@ class ShortLinkController extends Controller
 
         return $short_name;
     }
+
+    public function changeStatus($id)
+    {
+        try {
+            $shortlink = Shortlink::findOrFail($id);
+            // dd($shortlink);
+            if ($shortlink->statuses->status == 1) {
+                $shortlink->statuses()->update(['status' => 0]);
+            } else {
+                $shortlink->statuses()->update(['status' => 1]);
+            }
+            return redirect()->back()->with('success', 'Shortlink status successfully update');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
 }

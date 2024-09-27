@@ -22,11 +22,18 @@
             </nav>
         </div>
     </div>
+    <x-backend.alert-response/>
     <div class="grid grid-cols-1 gap-6 gap-y-0 md:grid-cols-2 2xl:grid-cols-4 2xl:gap-6">
-        <x-backend.dashboard.statistik title="User" total="35678" class="bx bx-user" />
-        <x-backend.dashboard.statistik title="Short Link" total="358k" class="bx bx-link" />
-        <x-backend.dashboard.statistik title="Bio Link" total="378k" class="bx bx-news" />
-        <x-backend.dashboard.statistik title="Presave Link" total="678k" class="bx bx-music" />
+        @if (Auth::user()->getRoleNames()->contains('superadmin'))
+            <x-backend.dashboard.statistik title="User" inactive="{{$userInactive}}" active="{{$userActive}}" total="{{$totalUser}}" class="bx bx-user" />
+            <x-backend.dashboard.statistik title="Short Link" inactive="{{$shortlinkInactive}}" active="{{$shortlinkActive}}" total="{{$totalShort}}" class="bx bx-link" />
+            <x-backend.dashboard.statistik title="Bio Link" inactive="0" active="0" total="{{$totalBiolink}}" class="bx bx-news" />
+            <x-backend.dashboard.statistik title="Presave Link" inactive="{{$presaveInactive}}" active="{{$presaveActive}}" total="{{$totalPresave}}" class="bx bx-music" />
+        @else
+            <x-backend.dashboard.statistik title="Short Link" inactive="{{$shortActiveByUser}}" active="{{$shortInactiveByUser}}" total="{{$shortlinkByUser}}" class="bx bx-link" />
+            <x-backend.dashboard.statistik title="Bio Link" inactive="0" active="0" total="0" class="bx bx-news" />
+            <x-backend.dashboard.statistik title="Presave Link" inactive="{{$presaveActiveByUser}}" active="{{$presaveInactiveByUser}}" total="{{$presaveByUser}}" class="bx bx-music" />
+        @endif
     </div>
 
 </x-backend.dashboard-layout>
