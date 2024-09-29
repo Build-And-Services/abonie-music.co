@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\backend\dashboard;
+namespace App\View\Components\Backend\Modal;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class statistik extends Component
+class AddLinkPresave extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class statistik extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.dashboard.statistik');
+        return view('components.backend.modal.add-link-presave');
     }
 }

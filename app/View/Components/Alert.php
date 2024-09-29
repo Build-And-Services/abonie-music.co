@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\backend;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class DashboardLayout extends Component
+class Alert extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class DashboardLayout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('layouts.backend.dashboard-layout');
+        return view('components.alert');
     }
 }

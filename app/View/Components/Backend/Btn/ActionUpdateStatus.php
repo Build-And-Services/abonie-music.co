@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\backend;
+namespace App\View\Components\Backend\Btn;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ColumnTable extends Component
+class ActionUpdateStatus extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class ColumnTable extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.column-table');
+        return view('components.backend.btn.action-update-status');
     }
 }

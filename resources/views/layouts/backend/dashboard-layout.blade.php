@@ -30,21 +30,6 @@
             padding: 10px 20px;
         }
 
-        =======<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>{{ $title ?? 'Presave - Dashboard' }}</title><link rel="stylesheet" href="{{ asset('assets-dashboard/css/tailwind2.css') }}">@vite(['resources/css/app.css', 'resources/js/app.js'])
-
-        @stack('stylesheet')
-
-        <style>.dataTables_filter {
-            /* background-color: blue; */
-        }
-
-        >>>>>>>48da25e (wip: feature add presave) @media (max-width: 767px) {
-            div.dataTables_wrapper div.dataTables_filter {
-                margin-top: 70px;
-                justify-items: center !important;
-            }
-        }
-
         .dt-buttons .dt-button {
             padding: 10px 20px;
         }
