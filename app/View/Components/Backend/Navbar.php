@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\backend;
+namespace App\View\Components\Backend;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class sidebar extends Component
+class Navbar extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class sidebar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.sidebar');
+        return view('components.backend.navbar');
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\backend\modal;
+namespace App\View\Components\Backend;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class AddLinkPresave extends Component
+class DashboardLayout extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class AddLinkPresave extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.modal.add-link-presave');
+        return view('layouts.backend.dashboard-layout');
     }
 }

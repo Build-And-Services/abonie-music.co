@@ -76,8 +76,8 @@ class PlatformPresaveController extends Controller
     {
         $validationData = $request->validate([
             'name' => 'required|max:255',
-            'url' => 'required|max:255',
-            'thumbnail' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'url' => 'max:255',
+            'thumbnail' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         try {
             DB::beginTransaction();

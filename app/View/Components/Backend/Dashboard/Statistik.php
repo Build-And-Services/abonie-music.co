@@ -1,22 +1,19 @@
 <?php
 
-namespace App\View\Components\backend\btn;
+namespace App\View\Components\Backend\Dashboard;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ActionDelete extends Component
+class Statistik extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $name;
-    public $id;
-    public function __construct($name, $id)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->id = $id;
+        //
     }
 
     /**
@@ -24,6 +21,6 @@ class ActionDelete extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.btn.action-delete');
+        return view('components.backend.dashboard.statistik');
     }
 }

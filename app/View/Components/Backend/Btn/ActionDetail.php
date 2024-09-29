@@ -1,12 +1,12 @@
 <?php
 
-namespace App\View\Components\backend\btn;
+namespace App\View\Components\Backend\Btn;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ActionEdit extends Component
+class ActionDetail extends Component
 {
     public $name;
     public $id;
@@ -21,6 +21,6 @@ class ActionEdit extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.btn.action-edit');
+        return view('components.backend.btn.action-detail');
     }
 }

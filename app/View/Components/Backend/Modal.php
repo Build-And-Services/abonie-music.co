@@ -1,20 +1,19 @@
 <?php
 
-namespace App\View\Components\backend;
+namespace App\View\Components\Backend;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TableHead extends Component
+class Modal extends Component
 {
-    public $columns;
     /**
      * Create a new component instance.
      */
-    public function __construct($columns)
+    public function __construct()
     {
-        $this->columns = $columns;
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class TableHead extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.table-head');
+        return view('components.backend.modal');
     }
 }

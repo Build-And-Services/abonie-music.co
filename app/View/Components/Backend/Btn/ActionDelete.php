@@ -1,13 +1,16 @@
 <?php
 
-namespace App\View\Components\backend\btn;
+namespace App\View\Components\Backend\Btn;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class ActionDetail extends Component
+class ActionDelete extends Component
 {
+    /**
+     * Create a new component instance.
+     */
     public $name;
     public $id;
     public function __construct($name, $id)
@@ -21,6 +24,6 @@ class ActionDetail extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.backend.btn.action-detail');
+        return view('components.backend.btn.action-delete');
     }
 }
