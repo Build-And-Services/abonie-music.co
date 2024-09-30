@@ -21,7 +21,7 @@ class DashboardController extends Controller
             $shortlinksByUser = Shortlink::where('id_user', Auth::user()->id)->count();
             $presavesByUser = Presave::where('user_id', Auth::user()->id)->count();
             $userActive = User::whereHas('statuses', function ($query) {
-                $query->where('status', 1);
+                $query->where('status', 1)->where('name', '!=', 'superadmin');
             })->count();
             $userInactive = User::whereHas('statuses', function ($query) {
                 $query->where('status', 0);
