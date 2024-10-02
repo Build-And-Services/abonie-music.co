@@ -71,7 +71,11 @@
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
-                                    {{ $cell->users->name }}
+                                    @if ($cell->users)
+                                        {{ $cell->users->name }}
+                                    @else
+                                        Public
+                                    @endif
                                 </x-backend.column-table>
 
                                 <x-backend.column-table>
