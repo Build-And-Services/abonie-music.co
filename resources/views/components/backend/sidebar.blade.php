@@ -101,24 +101,6 @@
                                         User</a>
                                 </li>
                             @endcan
-
-                            @can('admin.view')
-                                <li>
-                                    <a href="buttons.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">User
-                                        Active</a>
-                                </li>
-                            @endcan
-
-                            @can('admin.view')
-                                <li>
-                                    <a href="cards.html"
-                                        class="block py-[6.4px] pl-[52.8px] pr-6 text-[13.5px] font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">User
-                                        banned</a>
-                                </li>
-                            @endcan
-
-
                         </ul>
                     </li>
                 @endcan

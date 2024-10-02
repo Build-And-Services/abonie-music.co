@@ -36,10 +36,10 @@
                     </div>
                 </div>
                 <div>
-                    <button type="button" class="light-dark-mode text-xl px-3 h-[70px] text-gray-600 dark:text-gray-100 hidden sm:block ">
+                    {{-- <button type="button" class="light-dark-mode text-xl px-3 h-[70px] text-gray-600 dark:text-gray-100 hidden sm:block ">
                         <i data-feather="moon" class="block w-5 h-5 dark:hidden"></i>
                         <i data-feather="sun" class="hidden w-5 h-5 dark:block"></i>
-                    </button>
+                    </button> --}}
                 </div>
                 <div>
                     <div class="relative dropdown">
@@ -67,7 +67,7 @@
                                 <div class="dropdown-item dark:text-gray-100">
                                     <form action="{{ route('logout') }}" method="post">
                                         @csrf
-                                        <button class="block p-3 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50">
+                                        <button class="block w-full text-left px-3 py-2 hover:bg-gray-50/50 dark:hover:bg-zinc-700/50">
                                             <i class="mr-1 align-middle mdi mdi-logout text-16"></i> Logout
                                         </button>
                                     </form>

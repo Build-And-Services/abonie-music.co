@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index'])->name('users.index');
     Route::get('/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::post('/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::patch('/status/{id}', [UserController::class, 'status'])->name('users.status');
     Route::get('/profile/{id}', [ProfileController::class, 'show'])->name('profile.show');

@@ -29,8 +29,44 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('backend.users.show', [
-            'user' => $user
+            'getUser' => $user
         ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'password' => 'nullable|string|min:6',
+                'img' => 'nullable|mimes:jpg,jpeg,png,webp|max:2048',
+            ]);
+
+            if (!empty($request->password)) {
+                $password = bcrypt($request->password);
+            } else {
+                $password = $user->password;
+            }
+            if ($request->hasFile('img')) {
+                $image = $request->file('img');
+                $img = base64_encode(file_get_contents($image->getRealPath()));
+            } else {
+                $img = $user->img;
+            }
+            
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $password,
+                'img' => $img,
+            ]);
+            return redirect()->back()->with('success', 'User profile successfully updated');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
     public function destroy($id)
