@@ -87,7 +87,7 @@
                 @can('admin.view')
                     <li class="mt-2 cursor-default px-5 py-3 text-xs font-medium leading-[18px] text-gray-500 group-data-[sidebar-size=sm]:hidden"
                         data-key="t-elements">Setting</li>
-                    <li class="{{ request()->is('dashboard/users*') && !request()->is('dashboard/users/profile/*') ? 'mm-active' : '' }}">
+                    <li class="{{ request()->is('dashboard/users/*') && !request()->is('dashboard/users/profile/*') ? 'mm-active' : '' }}">
                         <a href="javascript: void(0);" aria-expanded="{{ request()->is('dashboard/users*') && !request()->is('dashboard/users/profile/*') ? 'true' : 'false' }}" 
                             class="nav-menu block px-6 py-2.5 text-sm font-medium text-gray-950 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:hover:text-white dark:active:text-white">
                             <i data-feather="briefcase" fill="#545a6d33"></i>
