@@ -295,8 +295,8 @@
                                                                 picker</label>
                                                             <input
                                                                 class="h-10 p-1 text-sm text-gray-500 bg-transparent border border-gray-100 rounded focus:border focus:border-violet-500 focus:ring-0 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-zinc-100 w-14"
-                                                                type="color" value="#5156be"
-                                                                id="example-color-input">
+                                                                type="color" value="{{ $biolinks->background }}"
+                                                                id="bg-color-picker">
                                                         </div>
                                                         <h1
                                                             class="block mb-2 font-medium text-gray-700 dark:text-gray-100">
@@ -304,7 +304,8 @@
                                                         </h1>
                                                         <input
                                                             class="h-10 p-1 text-sm text-gray-500 bg-transparent border border-gray-100 rounded focus:border focus:border-violet-500 focus:ring-0 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-zinc-100 w-14"
-                                                            type="color" value="#5156be" id="example-color-input">
+                                                            type="color" value="{{ $biolinks->color }}"
+                                                            id="text-color-picker">
                                                     </div>
                                                 </div>
                                             </div>
@@ -480,6 +481,49 @@
                         $('#modal-add_link').toggleClass('hidden');
                         document.getElementById("preview").innerHTML =
                             '<iframe id="previews" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>';
+                    },
+                });
+            })
+
+
+            $('#bg-color-picker').on('change', function() {
+                console.log($(this).val());
+                const color = $(this).val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('biolink.updateBackground') }}', // Update with your route
+                    data: {
+                        id: '{{ $biolinks->id }}',
+                        color: color,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token
+                    },
+                    success: function(response) {
+                        document.getElementById("preview").innerHTML =
+                            '<iframe id="previews" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>'
+                    },
+                });
+            })
+
+            $('#text-color-picker').on('change', function() {
+                console.log($(this).val());
+                const color = $(this).val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('biolink.update-text') }}', // Update with your route
+                    data: {
+                        id: '{{ $biolinks->id }}',
+                        color: color,
+                    },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token
+                    },
+                    success: function(response) {
+                        document.getElementById("preview").innerHTML =
+                            '<iframe id="previews" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>'
                     },
                 });
             })

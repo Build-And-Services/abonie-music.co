@@ -78,6 +78,32 @@ class BiolinkController extends Controller
 
     }
 
+    public function updateBackground(Request $request)
+    {
+        try {
+            // dd($request);
+            $background = Biolink::find($request->id);
+            $background->background = $request->color;
+            $background->save();
+            return "done";
+        } catch (\Throwable $th) {
+            return "error";
+        }
+    }
+
+     public function updateText(Request $request)
+    {
+        try {
+            // dd($request);
+            $background = Biolink::find($request->id);
+            $background->color = $request->color;
+            $background->save();
+            return "done";
+        } catch (\Throwable $th) {
+            return "error";
+        }
+    }
+
     /**
      * Display the specified resource.
      */
@@ -94,7 +120,9 @@ class BiolinkController extends Controller
         try {
             $biolinks = Biolink::findOrFail($id);
             $styleLink = StyleLink::where('biolink_id', $id)->first();
-            
+            // var_dump($biolinks);
+            // dd($biolinks->background_image == null);
+
             return view("backend.biolink.create", compact("biolinks", "styleLink"));
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());

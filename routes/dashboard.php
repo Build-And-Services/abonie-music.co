@@ -24,6 +24,8 @@ Route::middleware(["auth"])->group(function () {
         Route::resource('/roles', RolesController::class, ['name' => 'roles']);
         Route::resource('/biolink', BiolinkController::class, ['name' => 'biolink']);
         Route::post('/biolink/link/{id}', [BiolinkController::class, 'addLink'])->name('biolink.store.link');
+        Route::post('/biolink/bg/', [BiolinkController::class, 'updateBackground'])->name('biolink.updateBackground');
+        Route::post('/biolink/text/', [BiolinkController::class, 'updateText'])->name('biolink.update-text');
         Route::resource('/presave', PresaveController::class, ['name' => 'presave']);
         Route::get('/preview/presave/{id}', [PreviewController::class, 'presave'])->name('preview.presave.index');
         Route::get('/preview/{id}', [PreviewController::class, 'index'])->name('preview.biolink.index');

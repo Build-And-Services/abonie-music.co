@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="relative min-h-screen bg-white">
+<body class="relative min-h-screen bg-[{{ $biolink->background }}] text-[{{ $biolink->color }}]">
     <div class="mx-auto mb-28 flex flex-col px-4 py-6 md:max-w-2xl">
         <div class="mx-auto flex flex-col gap-1">
             <div class="profile-image mx-auto h-24 w-24">
@@ -21,10 +21,10 @@
             </div>
         </div>
 
-        <div class="links mt-5 grid grid-cols-6 gap-8">
+        <div class="links mt-5 grid grid-cols-6 gap-5">
             @foreach ($biolink->linkable as $item)
                 <div
-                    class="group w-full col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105">
+                    class="group w-full col-span-6 flex h-16 cursor-pointer items-center justify-center rounded-full border bg-white shadow-lg transition-all duration-300 hover:scale-105 text-black">
                     <a href="{{ $item->link }}" class="mx-auto text-lg font-semibold">{{ $item->title }}</a>
                 </div>
             @endforeach
@@ -91,7 +91,8 @@
         </div>
     </div>
 
-    <div class="fixed bottom-0 left-[50%] z-50 w-full -translate-x-1/2 rounded-md bg-white py-4 shadow-lg md:max-w-2xl">
+    <div
+        class="fixed bottom-0 left-[50%] z-50 w-full -translate-x-1/2 rounded-md bg-white/10 backdrop-blur-md py-4 shadow-lg md:max-w-2xl text-black">
         <div class="flex items-center justify-center">
             <a href="#" class="text-lg font-semibold">
                 <img src="{{ asset('assets/logo-abonie.png') }}" alt=""
