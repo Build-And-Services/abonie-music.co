@@ -214,37 +214,45 @@
 
                                                         <div
                                                             class="grid !grid-cols-2 sm:!grid-cols-3 md:!grid-cols-4 gap-2">
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-red-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-orange-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-yellow-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-green-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-blue-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-indigo-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer bg-purple-500 rounded-md flex flex-col justify-center items-center group hover:scale-105 duration-300">
-                                                                <h1 class="hidden group-hover:block">Choose Me</h1>
-                                                            </div>
-                                                            <div
-                                                                class="h-72 cursor-pointer border rounded-md flex flex-col justify-center items-center">
 
+
+                                                            <div id="pick-color"
+                                                                class="background-pick h-72 cursor-pointer rounded-md flex flex-col justify-center items-center border {{ $biolinks->background_image == null ? 'border-blue-500' : '' }}">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="21.207"
+                                                                    height="21.207" viewBox="0 0 21.207 21.207">
+                                                                    <defs>
+                                                                        <style>
+                                                                            .a {
+                                                                                opacity: 0.5;
+                                                                            }
+
+                                                                            .b {
+                                                                                fill: none;
+                                                                                stroke: #414141;
+                                                                                stroke-linecap: round;
+                                                                                stroke-linejoin: round;
+                                                                            }
+                                                                        </style>
+                                                                    </defs>
+                                                                    <g class="a"
+                                                                        transform="translate(-9.443 -8.819)">
+                                                                        <path class="b"
+                                                                            d="M6.722,4.5H22.278A2.222,2.222,0,0,1,24.5,6.722V22.278A2.222,2.222,0,0,1,22.278,24.5H6.722A2.222,2.222,0,0,1,4.5,22.278V6.722A2.222,2.222,0,0,1,6.722,4.5Z"
+                                                                            transform="translate(5.443 4.819)" />
+                                                                        <path class="b"
+                                                                            d="M14.852,12.676A2.176,2.176,0,1,1,12.676,10.5,2.176,2.176,0,0,1,14.852,12.676Z"
+                                                                            transform="translate(3.411 2.786)" />
+                                                                        <path class="b"
+                                                                            d="M25.227,20.683,19.687,15,7.5,27.5"
+                                                                            transform="translate(4.716 1.818)" />
+                                                                    </g>
+                                                                </svg>
+                                                                <h1>Pick Color</h1>
+                                                                <input type="radio" name="background"
+                                                                    class="hidden">
+                                                            </div>
+                                                            <div id="pick-image"
+                                                                class="background-pick h-72 cursor-pointer border rounded-md flex flex-col justify-center items-center {{ $biolinks->background_image != null ? 'border-blue-500' : '' }}">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21.207"
                                                                     height="21.207" viewBox="0 0 21.207 21.207">
                                                                     <defs>
@@ -275,8 +283,10 @@
                                                                     </g>
                                                                 </svg>
                                                                 <h1>Upload Image</h1>
-                                                                <input type="file" class="hidden">
+                                                                <input type="radio" name="background"
+                                                                    class="hidden">
                                                             </div>
+
                                                         </div>
                                                         <div class="mt-4">
                                                             <label for="example-text-input"
@@ -344,6 +354,41 @@
     @push('scripts')
         {{-- information --}}
         <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Ambil parameter 'section' dari URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const section = urlParams.get('section');
+
+                if (section) {
+                    // Seleksi semua elemen dengan class 'tab-pane'
+                    const tabPanes = document.querySelectorAll('.tab-pane');
+
+                    tabPanes.forEach(tabPane => {
+                        // Tambahkan kelas 'hidden' ke semua 'tab-pane'
+                        tabPane.classList.add('hidden');
+
+                        // Hapus kelas 'hidden' jika ID-nya sama dengan 'section'
+                        if (tabPane.id === section) {
+                            tabPane.classList.remove('hidden');
+                        }
+                    });
+
+
+                    const navLinks = document.querySelectorAll('.nav-item a');
+
+                    navLinks.forEach(navLink => {
+                        // Hapus kelas 'active' dari semua elemen <a>
+                        navLink.classList.remove('active');
+
+                        // Tambahkan kelas 'active' jika ID elemen cocok dengan 'section'
+                        if (navLink.getAttribute('data-tw-target') === section) {
+                            navLink.classList.add('active');
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
             $(document).ready(function() {
                 document.getElementById("preview").innerHTML =
                     '<iframe id="preview" src="{{ route('preview.biolink.index', $biolinks->id) }}" height="100%" width="100%"></iframe>';
@@ -402,6 +447,18 @@
 
         {{-- link --}}
         <script>
+            $('.background-pick').on('click', function(e) {
+
+                const backgroundPicks = document.querySelectorAll('.background-pick');
+
+                backgroundPicks.forEach(backgroundPick => {
+                    // Hapus kelas 'active' dari semua elemen <a>
+                    backgroundPick.classList.remove('border-blue-500');
+                });
+                console.log(backgroundPicks);
+                $(this).addClass('border-blue-500')
+                $(this).find('input[type="radio"]').prop('checked', true);
+            })
             $('#link-form').on('submit', function(e) {
                 e.preventDefault();
                 var $form = $(this)

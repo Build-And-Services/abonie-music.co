@@ -94,7 +94,7 @@ class BiolinkController extends Controller
         try {
             $biolinks = Biolink::findOrFail($id);
             $styleLink = StyleLink::where('biolink_id', $id)->first();
-
+            
             return view("backend.biolink.create", compact("biolinks", "styleLink"));
         } catch (\Throwable $th) {
             return back()->with('error', $th->getMessage());
